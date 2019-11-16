@@ -13,6 +13,8 @@
 		C9BBEF28238093EF0004F631 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BBEF26238093EF0004F631 /* Main.storyboard */; };
 		C9BBEF2A238093F20004F631 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BBEF29238093F20004F631 /* Assets.xcassets */; };
 		C9BBEF2D238093F20004F631 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BBEF2B238093F20004F631 /* LaunchScreen.storyboard */; };
+		C9BBEF35238095B80004F631 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BBEF34238095B80004F631 /* Grid.swift */; };
+		C9BBEF37238096760004F631 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BBEF36238096760004F631 /* Scene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		C9BBEF29238093F20004F631 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9BBEF2C238093F20004F631 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9BBEF2E238093F20004F631 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9BBEF34238095B80004F631 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		C9BBEF36238096760004F631 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				C9BBEF20238093EF0004F631 /* AppDelegate.swift */,
 				C9BBEF22238093EF0004F631 /* SceneDelegate.swift */,
 				C9BBEF24238093EF0004F631 /* ViewController.swift */,
+				C9BBEF34238095B80004F631 /* Grid.swift */,
+				C9BBEF36238096760004F631 /* Scene.swift */,
 				C9BBEF26238093EF0004F631 /* Main.storyboard */,
 				C9BBEF29238093F20004F631 /* Assets.xcassets */,
 				C9BBEF2B238093F20004F631 /* LaunchScreen.storyboard */,
@@ -140,7 +146,9 @@
 			files = (
 				C9BBEF25238093EF0004F631 /* ViewController.swift in Sources */,
 				C9BBEF21238093EF0004F631 /* AppDelegate.swift in Sources */,
+				C9BBEF37238096760004F631 /* Scene.swift in Sources */,
 				C9BBEF23238093EF0004F631 /* SceneDelegate.swift in Sources */,
+				C9BBEF35238095B80004F631 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +302,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sanch.Kai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -312,7 +320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sanch.Kai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
