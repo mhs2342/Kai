@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var scene: Scene!
     var camera = SKCameraNode()
     var scaleFactor: CGFloat = 1.0
+    var designTray = DesignTrayView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,14 @@ class ViewController: UIViewController {
 
         view.addSubview(skview)
 
+        view.addSubview(designTray)
+        setupSubviews()
+
+    }
+
+    func setupSubviews() {
+        designTray.anchor(trailing: view.safeAreaLayoutGuide.trailingAnchor,
+                          centerY: view.safeAreaLayoutGuide.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16))
     }
 
 

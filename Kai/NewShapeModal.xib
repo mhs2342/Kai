@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Xwg-z3-iDf" customClass="NewShapeModal" customModule="Kai" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="489" height="321"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Shape" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4K5-0C-3qJ">
+                    <rect key="frame" x="186.5" y="10" width="116" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmU-Wy-j5c" customClass="ShapeSelectionControl" customModule="Kai" customModuleProvider="target">
+                    <rect key="frame" x="124.5" y="37.5" width="240" height="100"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" placeholder="YES" id="CQc-CA-wKc"/>
+                        <constraint firstAttribute="width" constant="240" placeholder="YES" id="vnq-bd-Inn"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="asn-mG-5ON">
+                    <rect key="frame" x="0.0" y="137.5" width="489" height="64.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGn-l1-fTM">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p6B-sI-KXU">
+                            <rect key="frame" x="0.0" y="20.5" width="489" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="0sS-ey-ebD"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="p6B-sI-KXU" secondAttribute="trailing" id="7nK-im-TIk"/>
+                        <constraint firstItem="p6B-sI-KXU" firstAttribute="leading" secondItem="asn-mG-5ON" secondAttribute="leading" id="npw-Sl-Qvs"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="4K5-0C-3qJ" firstAttribute="top" secondItem="Xwg-z3-iDf" secondAttribute="top" constant="10" id="0BN-Vh-hGo"/>
+                <constraint firstItem="wmU-Wy-j5c" firstAttribute="top" secondItem="4K5-0C-3qJ" secondAttribute="bottom" constant="8" id="5tx-hr-bG4"/>
+                <constraint firstItem="wmU-Wy-j5c" firstAttribute="centerX" secondItem="Xwg-z3-iDf" secondAttribute="centerX" id="AI2-nu-zJ6"/>
+                <constraint firstItem="4K5-0C-3qJ" firstAttribute="centerX" secondItem="Xwg-z3-iDf" secondAttribute="centerX" id="bLn-kO-WVr"/>
+                <constraint firstItem="asn-mG-5ON" firstAttribute="top" secondItem="wmU-Wy-j5c" secondAttribute="bottom" id="gRg-SS-zM2"/>
+                <constraint firstItem="asn-mG-5ON" firstAttribute="leading" secondItem="Xwg-z3-iDf" secondAttribute="leading" id="qYQ-6H-Y9z"/>
+                <constraint firstAttribute="trailing" secondItem="asn-mG-5ON" secondAttribute="trailing" id="sTR-Yx-ZhM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="shapeSelectionControl" destination="wmU-Wy-j5c" id="duP-ve-ott"/>
+            </connections>
+            <point key="canvasLocation" x="-218.11594202898553" y="-159.04017857142856"/>
+        </view>
+        <view contentMode="scaleToFill" id="kXV-p4-RYB" customClass="ShapeSelectionControlItem" customModule="Kai" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="425" height="195"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="W4y-5z-dkW" customClass="ShapeSelectionControlItem" customModule="Kai" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="425" height="195"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWu-wc-pji">
+                            <rect key="frame" x="0.0" y="0.0" width="425" height="168.5"/>
+                            <state key="normal" image="rectangle" catalog="system"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rectangle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQO-5q-ZQj">
+                            <rect key="frame" x="0.0" y="174.5" width="425" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="W4y-5z-dkW" secondAttribute="trailing" id="BHm-WH-0IE"/>
+                <constraint firstAttribute="bottom" secondItem="W4y-5z-dkW" secondAttribute="bottom" id="DEg-5o-igd"/>
+                <constraint firstItem="W4y-5z-dkW" firstAttribute="top" secondItem="kXV-p4-RYB" secondAttribute="top" id="WgU-gy-vgJ"/>
+                <constraint firstItem="W4y-5z-dkW" firstAttribute="leading" secondItem="kXV-p4-RYB" secondAttribute="leading" id="eaw-LU-vAm"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="button" destination="IWu-wc-pji" id="UTd-53-Gwo"/>
+                <outlet property="label" destination="DQO-5q-ZQj" id="M05-gG-vBA"/>
+            </connections>
+            <point key="canvasLocation" x="-225.36231884057972" y="61.941964285714285"/>
+        </view>
+        <view contentMode="scaleToFill" id="30f-z1-hO0" customClass="ShapeSelectionControl" customModule="Kai" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="218"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Ekf-FK-See" customClass="ShapeSelectionControl" customModule="Kai" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="218"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Np-6n-JlX" customClass="ShapeSelectionControlItem" customModule="Kai" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="116.5" height="218"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="irp-yt-ask" customClass="ShapeSelectionControlItem" customModule="Kai" customModuleProvider="target">
+                            <rect key="frame" x="148.5" y="0.0" width="117" height="218"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1p-HN-5TZ" customClass="ShapeSelectionControlItem" customModule="Kai" customModuleProvider="target">
+                            <rect key="frame" x="297.5" y="0.0" width="116.5" height="218"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Ekf-FK-See" secondAttribute="bottom" id="8NH-dl-Hep"/>
+                <constraint firstAttribute="trailing" secondItem="Ekf-FK-See" secondAttribute="trailing" id="Vh0-cj-S0o"/>
+                <constraint firstItem="Ekf-FK-See" firstAttribute="top" secondItem="30f-z1-hO0" secondAttribute="top" id="fOx-U2-654"/>
+                <constraint firstItem="Ekf-FK-See" firstAttribute="leading" secondItem="30f-z1-hO0" secondAttribute="leading" id="iUo-e2-FEy"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="circle" destination="3Np-6n-JlX" id="R71-Be-tsE"/>
+                <outlet property="rectangle" destination="irp-yt-ask" id="wFL-ha-5mN"/>
+                <outlet property="square" destination="F1p-HN-5TZ" id="PhN-tJ-evB"/>
+            </connections>
+            <point key="canvasLocation" x="-1020.2898550724639" y="-67.633928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="rectangle" catalog="system" width="64" height="46"/>
+    </resources>
+</document>
