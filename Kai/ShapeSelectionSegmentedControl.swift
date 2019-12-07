@@ -7,8 +7,11 @@
 //
 
 import UIKit
-protocol ShapeSelectionSegmentedControlDelegate: class {
+protocol ShapeSelectionSegmentedControlItemDelegate: class {
     func shapeSelectionSegmentedControlDelegate(selected option: ShapeSelectionControlItem)
+}
+protocol ShapeSelectionSegmentedControlDelegate: class {
+    func shapeSelectionSegmentedControlDelegate(selected option: ShapeSelection)
 }
 
 class ShapeSelectionSegmentedControl: UIView {
@@ -19,6 +22,9 @@ class ShapeSelectionSegmentedControl: UIView {
         view.alignment = .bottom
         return view
     }()
+
+    weak var delegate: ShapeSelectionSegmentedControlDelegate?
+    var setDefaultSelection = false
 
     init() {
         super.init(frame: .zero)
@@ -38,13 +44,20 @@ class ShapeSelectionSegmentedControl: UIView {
         options.insert(option)
         stackView.addArrangedSubview(option)
         option.delegate = self
+
+        if !setDefaultSelection {
+            option.showSelection()
+            setDefaultSelection.toggle()
+        }
     }
 }
 
-extension ShapeSelectionSegmentedControl: ShapeSelectionSegmentedControlDelegate {
+extension ShapeSelectionSegmentedControl: ShapeSelectionSegmentedControlItemDelegate {
     func shapeSelectionSegmentedControlDelegate(selected option: ShapeSelectionControlItem) {
         option.showSelection()
         options.filter({$0 != option }).forEach({ $0.hideSelection() })
+
+        delegate?.shapeSelectionSegmentedControlDelegate(selected: option.shapeSelection)
     }
 
 

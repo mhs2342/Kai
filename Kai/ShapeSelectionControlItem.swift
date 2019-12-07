@@ -13,14 +13,16 @@ import UIKit
 struct ShapeControlItemViewModel {
     var label: String
     var imageName: String
+    var shape: ShapeSelection
 
-    static var Circle = ShapeControlItemViewModel(label: "Circle", imageName: "Circle")
-    static var Rectangle = ShapeControlItemViewModel(label: "Rectangle", imageName: "Rectangle")
-    static var Square = ShapeControlItemViewModel(label: "Square", imageName: "Square")
+    static var Circle = ShapeControlItemViewModel(label: "Circle", imageName: "Circle", shape: .circle)
+    static var Rectangle = ShapeControlItemViewModel(label: "Rectangle", imageName: "Rectangle", shape: .rectangle)
+    static var Square = ShapeControlItemViewModel(label: "Square", imageName: "Square", shape: .square)
 }
 
 class ShapeSelectionControlItem: UIView {
-    weak var delegate: ShapeSelectionSegmentedControlDelegate?
+    weak var delegate: ShapeSelectionSegmentedControlItemDelegate?
+    var shapeSelection: ShapeSelection
     private var button: CenteredButton = {
         let button = CenteredButton()
         return button
@@ -48,6 +50,7 @@ class ShapeSelectionControlItem: UIView {
     }
 
     init(viewModel: ShapeControlItemViewModel) {
+        self.shapeSelection = viewModel.shape
         super.init(frame: .zero)
 
         addSubview(button)

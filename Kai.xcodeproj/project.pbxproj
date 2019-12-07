@@ -12,6 +12,7 @@
 		C978950E239ADED900D65CB3 /* NewShapeModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978950D239ADED900D65CB3 /* NewShapeModalViewController.swift */; };
 		C9789510239ADF9F00D65CB3 /* ShapeSelectionSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978950F239ADF9F00D65CB3 /* ShapeSelectionSegmentedControl.swift */; };
 		C9789512239AE02300D65CB3 /* ShapeSelectionControlItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9789511239AE02300D65CB3 /* ShapeSelectionControlItem.swift */; };
+		C9789514239B34CF00D65CB3 /* ModalShapeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9789513239B34CF00D65CB3 /* ModalShapeInputView.swift */; };
 		C9BBEF21238093EF0004F631 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BBEF20238093EF0004F631 /* AppDelegate.swift */; };
 		C9BBEF23238093EF0004F631 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BBEF22238093EF0004F631 /* SceneDelegate.swift */; };
 		C9BBEF25238093EF0004F631 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BBEF24238093EF0004F631 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		C978950D239ADED900D65CB3 /* NewShapeModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShapeModalViewController.swift; sourceTree = "<group>"; };
 		C978950F239ADF9F00D65CB3 /* ShapeSelectionSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeSelectionSegmentedControl.swift; sourceTree = "<group>"; };
 		C9789511239AE02300D65CB3 /* ShapeSelectionControlItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeSelectionControlItem.swift; sourceTree = "<group>"; };
+		C9789513239B34CF00D65CB3 /* ModalShapeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalShapeInputView.swift; sourceTree = "<group>"; };
 		C9BBEF1D238093EF0004F631 /* Kai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BBEF20238093EF0004F631 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9BBEF22238093EF0004F631 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				C9BBEF2E238093F20004F631 /* Info.plist */,
 				C9789509239ACFC500D65CB3 /* DesignTrayView.swift */,
 				C978950B239ACFF700D65CB3 /* Extensions.swift */,
+				C9789513239B34CF00D65CB3 /* ModalShapeInputView.swift */,
 				C978950D239ADED900D65CB3 /* NewShapeModalViewController.swift */,
 				C978950F239ADF9F00D65CB3 /* ShapeSelectionSegmentedControl.swift */,
 				C9789511239AE02300D65CB3 /* ShapeSelectionControlItem.swift */,
@@ -168,6 +171,7 @@
 				C9BBEF35238095B80004F631 /* Grid.swift in Sources */,
 				C9789512239AE02300D65CB3 /* ShapeSelectionControlItem.swift in Sources */,
 				C9789510239ADF9F00D65CB3 /* ShapeSelectionSegmentedControl.swift in Sources */,
+				C9789514239B34CF00D65CB3 /* ModalShapeInputView.swift in Sources */,
 				C978950C239ACFF700D65CB3 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
