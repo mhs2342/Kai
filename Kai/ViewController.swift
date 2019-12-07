@@ -33,11 +33,22 @@ class ViewController: UIViewController {
         view.addSubview(designTray)
         setupSubviews()
 
+        designTray.delegate = self
+
     }
 
     func setupSubviews() {
         designTray.anchor(trailing: view.safeAreaLayoutGuide.trailingAnchor,
                           centerY: view.safeAreaLayoutGuide.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16))
+    }
+
+
+}
+
+extension ViewController: DesignTrayDelegate {
+    func addNewShapePressed() {
+        let vc = NewShapeModalViewController()
+        present(vc, animated: true)
     }
 
 
