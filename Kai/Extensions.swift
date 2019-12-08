@@ -27,6 +27,14 @@ extension UIView {
         }
     }
 
+    func centerWithin(_ view: UIView) {
+        translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            ])
+    }
+
     func centerWithinParentsFrame() {
         translatesAutoresizingMaskIntoConstraints = false
         if let parent = superview?.safeAreaLayoutGuide {

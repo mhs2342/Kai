@@ -58,26 +58,16 @@ class DesignTrayView: UIView {
         containerView.addArrangedSubview(shapeStackView)
         containerView.addArrangedSubview(plusButton)
         containerView.anchorToParentsSafeAreaEdges()
-    }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 8
+        layer.cornerRadius = 8
+        backgroundColor = .white
+        containerView.layer.cornerRadius = 8
 
-
-        if shadowLayer == nil {
-            shadowLayer = CAShapeLayer()
-
-            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
-            shadowLayer.fillColor = UIColor.white.cgColor
-
-            shadowLayer.shadowColor = UIColor.black.cgColor
-            shadowLayer.shadowPath = shadowLayer.path
-            shadowLayer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-            shadowLayer.shadowOpacity = 0.2
-            shadowLayer.shadowRadius = 8
-
-            layer.insertSublayer(shadowLayer, at: 0)
-        }
+        containerView.clipsToBounds = true
     }
 
     private func setupButtonTarget() {
@@ -86,6 +76,13 @@ class DesignTrayView: UIView {
 
     @objc private func plusButtonTapped(_ sender: UIButton) {
          delegate?.addNewShapePressed()
+    }
+
+    func addDesignItem(_ item: DesignTrayShapeItemModel) {
+        UIView.animate(withDuration: 0.3) {
+            self.shapeStackView.addArrangedSubview(DesignTrayShapeItem(item))
+            self.layoutIfNeeded()
+        }
     }
 
 }

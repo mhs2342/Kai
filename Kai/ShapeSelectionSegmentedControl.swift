@@ -8,7 +8,7 @@
 
 import UIKit
 protocol ShapeSelectionSegmentedControlItemDelegate: class {
-    func shapeSelectionSegmentedControlDelegate(selected option: ShapeSelectionControlItem)
+    func ShapeSelectionSegmentedControlItemDelegate(selected option: ShapeSelectionControlItem)
 }
 protocol ShapeSelectionSegmentedControlDelegate: class {
     func shapeSelectionSegmentedControlDelegate(selected option: ShapeSelection)
@@ -25,7 +25,7 @@ class ShapeSelectionSegmentedControl: UIView {
 
     weak var delegate: ShapeSelectionSegmentedControlDelegate?
     var setDefaultSelection = false
-
+    var selected: ShapeSelection?
     init() {
         super.init(frame: .zero)
 
@@ -38,7 +38,7 @@ class ShapeSelectionSegmentedControl: UIView {
     }
 
     // Shape Options
-     var options: Set<ShapeSelectionControlItem> = []
+    var options: Set<ShapeSelectionControlItem> = []
 
     func add(_ option: ShapeSelectionControlItem) {
         options.insert(option)
@@ -47,16 +47,17 @@ class ShapeSelectionSegmentedControl: UIView {
 
         if !setDefaultSelection {
             option.showSelection()
+            selected = option.shapeSelection
             setDefaultSelection.toggle()
         }
     }
 }
 
 extension ShapeSelectionSegmentedControl: ShapeSelectionSegmentedControlItemDelegate {
-    func shapeSelectionSegmentedControlDelegate(selected option: ShapeSelectionControlItem) {
+    func ShapeSelectionSegmentedControlItemDelegate(selected option: ShapeSelectionControlItem) {
         option.showSelection()
         options.filter({$0 != option }).forEach({ $0.hideSelection() })
-
+        selected = option.shapeSelection
         delegate?.shapeSelectionSegmentedControlDelegate(selected: option.shapeSelection)
     }
 

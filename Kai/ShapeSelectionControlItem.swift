@@ -84,7 +84,7 @@ class ShapeSelectionControlItem: UIView {
     }
 
     @objc private func wasTapped(_ sender: UIButton) {
-        delegate?.shapeSelectionSegmentedControlDelegate(selected: self)
+        delegate?.ShapeSelectionSegmentedControlItemDelegate(selected: self)
     }
 
 }

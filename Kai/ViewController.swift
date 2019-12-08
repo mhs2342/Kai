@@ -48,9 +48,15 @@ class ViewController: UIViewController {
 extension ViewController: DesignTrayDelegate {
     func addNewShapePressed() {
         let vc = NewShapeModalViewController()
+        vc.delegate = self
         present(vc, animated: true)
+
     }
+}
 
-
+extension ViewController: NewShapeModalViewDelegate {
+    func newShapeModalViewDelegate(add shape: DesignTrayShapeItemModel) {
+        designTray.addDesignItem(shape)
+    }
 }
 

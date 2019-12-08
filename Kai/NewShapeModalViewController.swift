@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol NewShapeModalViewDelegate: class {
+    func newShapeModalViewDelegate(add shape: DesignTrayShapeItemModel)
+}
+
 class NewShapeModalViewController: UIViewController {
     var titleLabel: UILabel = {
         let label = UILabel()
@@ -22,6 +26,8 @@ class NewShapeModalViewController: UIViewController {
 
     var firstInput = ModalShapeInputView()
     var secondInput = ModalShapeInputView()
+    var saveButton = SaveButton()
+    weak var delegate: NewShapeModalViewDelegate?
 
     private var inputStackView: UIStackView = {
         let view = UIStackView()
@@ -30,12 +36,13 @@ class NewShapeModalViewController: UIViewController {
         return view
     }()
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
 
-        modalPresentationStyle = .formSheet
+        modalPresentationStyle = .popover
         setupViews()
 
         segmentControl.delegate = self
@@ -45,6 +52,7 @@ class NewShapeModalViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(segmentControl)
         view.addSubview(inputStackView)
+        view.addSubview(saveButton)
 
         inputStackView.addArrangedSubview(firstInput)
         inputStackView.addArrangedSubview(secondInput)
@@ -61,13 +69,37 @@ class NewShapeModalViewController: UIViewController {
         inputStackView.anchor(leading: view.safeAreaLayoutGuide.leadingAnchor,
                      top: segmentControl.bottomAnchor,
                      trailing: view.safeAreaLayoutGuide.trailingAnchor)
+        saveButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                          centerX: view.safeAreaLayoutGuide.centerXAnchor,
+                          padding: UIEdgeInsets(top: 0, left: 0, bottom: -16, right: 0))
 
         segmentControl.add(ShapeSelectionControlItem(viewModel: .Circle))
         segmentControl.add(ShapeSelectionControlItem(viewModel: .Rectangle))
         segmentControl.add(ShapeSelectionControlItem(viewModel: .Square))
 
-        firstInput.update(.square("Diameter", "16'"))
+        firstInput.update(.square("Diameter (ft)", "16'"))
         secondInput.isHidden = true
+
+        saveButton.addTarget(self, action: #selector(saveShape(_:)), for: .touchUpInside)
+    }
+
+    @objc private func saveShape(_ sender: UIButton) {
+        switch segmentControl.selected! {
+        case .circle:
+            guard let text = firstInput.textField.text, let diameter = Double(text) else { return }
+            let model = DesignTrayShapeItemModel(name: "Circle", diameter: diameter)
+            delegate?.newShapeModalViewDelegate(add: model)
+        default:
+            guard let t1 = firstInput.textField.text,
+                let t2 = secondInput.textField.text,
+                let width = Double(t1),
+                let length = Double(t2) else { return }
+            let model = DesignTrayShapeItemModel(name: segmentControl.selected!.rawValue, width: width, length: length)
+            delegate?.newShapeModalViewDelegate(add: model)
+        }
+
+        dismiss(animated: true)
+
     }
 
 }
@@ -80,13 +112,13 @@ extension NewShapeModalViewController: ShapeSelectionSegmentedControlDelegate {
             firstInput.update(.circular("16'"))
             secondInput.isHidden = true
         case .square:
-            firstInput.update(.square("Width", "12'"))
-            secondInput.update(.square("Length", "12'"))
+            firstInput.update(.square("Width (ft)", "12'"))
+            secondInput.update(.square("Length (ft)", "12'"))
             secondInput.isHidden = false
 
         case .rectangle:
-            firstInput.update(.square("Width", "12'"))
-            secondInput.update(.square("Length", "18'"))
+            firstInput.update(.square("Width (ft)", "12'"))
+            secondInput.update(.square("Length (ft)", "18'"))
             secondInput.isHidden = false
         }
     }
@@ -94,8 +126,8 @@ extension NewShapeModalViewController: ShapeSelectionSegmentedControlDelegate {
 
 }
 
-enum ShapeSelection  {
-    case circle
-    case square
-    case rectangle
+enum ShapeSelection: String  {
+    case circle = "Circle"
+    case square = "Square"
+    case rectangle = "Rectangle"
 }
