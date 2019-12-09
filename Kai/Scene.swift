@@ -130,7 +130,8 @@ class Scene: SKScene {
         let filtered = children.filter({ $0 != node })
         for existing in filtered where existing is SKShapeNode {
             guard let existing = existing as? SKShapeNode,
-            let node = node as? SKShapeNode else {
+            let node = node as? SKShapeNode,
+            (!(node is RectangularWall) && !(existing is RectangularWall) )else {
                 continue
             }
 
@@ -164,7 +165,12 @@ class Scene: SKScene {
 
     func addNewNode(_ node: SKShapeNode) {
         checkforIntersections(node)
-        addChild(node)
+        if node is RectangularWall {
+            insertChild(node, at: 0)
+        } else {
+            addChild(node)
+        }
+
     }
 }
 

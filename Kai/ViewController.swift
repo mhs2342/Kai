@@ -58,8 +58,12 @@ class ViewController: UIViewController {
             guard let diameter = model.diameter else { return  nil}
             let circle = Circle(diameter: CGFloat(diameter) * Scene.TABLE_SCALE_FACTOR, point: placement) // Size of Circle
             return circle
-        } else if model.name == "Wall" {
-            let wall = Wall(start: placement, length: 2.0 * Scene.TABLE_SCALE_FACTOR)
+        } else if model.name == "Rectangular Wall" {
+            guard let length = model.length, let width = model.width else { return nil }
+            let wall = RectangularWall(rect: CGRect(x: placement.x,
+                                                    y: placement.y,
+                                                    width: CGFloat(width) * Scene.TABLE_SCALE_FACTOR,
+                                                    height: CGFloat(length) * Scene.TABLE_SCALE_FACTOR))
             return wall
         } else {
             guard let length = model.length, let width = model.width else { return nil }
@@ -85,9 +89,9 @@ extension ViewController: ShapeSelectionDelegate {
 
     func wallSegmentDeselected() {
         UIView.animate(withDuration: 0.3, animations: {
-            self.wallEditingTray.alpha = 1.0
+            self.wallEditingTray.alpha = 0.0
         }, completion: { done in
-            self.wallEditingTray.isHidden = false
+            self.wallEditingTray.isHidden = true
         })
     }
 }
