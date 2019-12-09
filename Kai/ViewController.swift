@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import MobileCoreServices
 
 class ViewController: UIViewController {
 
@@ -16,11 +17,12 @@ class ViewController: UIViewController {
     var camera = SKCameraNode()
     var scaleFactor: CGFloat = 1.0
     var designTray = DesignTrayView()
-
+    static let SCALE_TO_SIZE: CGFloat = 10.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         skview = SKView(frame: view.bounds)
+        skview.addInteraction(UIDropInteraction(delegate: self))
         scene = Scene(size: skview.frame.size)
         scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         camera.position = CGPoint(x: 0.5, y: 0.5)
@@ -28,7 +30,6 @@ class ViewController: UIViewController {
         scene.camera = camera
         scene.addChild(camera)
         skview.presentScene(scene)
-
         view.addSubview(skview)
         view.addSubview(designTray)
         setupSubviews()
@@ -40,6 +41,23 @@ class ViewController: UIViewController {
     func setupSubviews() {
         designTray.anchor(trailing: view.safeAreaLayoutGuide.trailingAnchor,
                           centerY: view.safeAreaLayoutGuide.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16))
+    }
+
+    func createNodeFromModel(_ model: DesignTrayShapeItemModel, point: CGPoint) -> SKShapeNode? {
+        let placement = scene.convertPoint(fromView: point.snapToGridLine())
+        if model.name == "Circle" {
+            guard let diameter = model.diameter else { return  nil}
+            let circle = Circle(diameter: CGFloat(diameter) * Scene.TABLE_SCALE_FACTOR, point: placement) // Size of Circle
+            return circle
+        } else {
+            guard let length = model.length, let width = model.width else { return nil }
+            let rect = Rectangle(rect: CGRect(x: placement.x,
+                                                  y: placement.y,
+                                                  width: CGFloat(width) * Scene.TABLE_SCALE_FACTOR,
+                                                  height: CGFloat(length) * Scene.TABLE_SCALE_FACTOR))
+            return rect
+
+        }
     }
 
 
@@ -57,6 +75,35 @@ extension ViewController: DesignTrayDelegate {
 extension ViewController: NewShapeModalViewDelegate {
     func newShapeModalViewDelegate(add shape: DesignTrayShapeItemModel) {
         designTray.addDesignItem(shape)
+    }
+}
+
+extension ViewController: UIDropInteractionDelegate {
+    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
+        return session.canLoadObjects(ofClass: DesignTrayShapeItemModel.self)
+    }
+
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
+
+        return UIDropProposal(operation: .copy)
+    }
+
+    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
+        for item in session.items {
+            let itemProvider = item.itemProvider
+            guard itemProvider.canLoadObject(ofClass: DesignTrayShapeItemModel.self)
+            else {continue}
+
+            itemProvider.loadObject(ofClass: DesignTrayShapeItemModel.self, completionHandler: { (object, error) in
+                if let model = object as? DesignTrayShapeItemModel,
+                    let node = self.createNodeFromModel(model, point: session.location(in: self.skview)) {
+
+                    DispatchQueue.main.async {
+                        self.scene.addNewNode(node)
+                    }
+                }
+            })
+        }
     }
 }
 

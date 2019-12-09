@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90A663E239DF099009FE630 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A663D239DF099009FE630 /* Rectangle.swift */; };
+		C90A6640239DF173009FE630 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A663F239DF173009FE630 /* Circle.swift */; };
 		C978950A239ACFC500D65CB3 /* DesignTrayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9789509239ACFC500D65CB3 /* DesignTrayView.swift */; };
 		C978950C239ACFF700D65CB3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978950B239ACFF700D65CB3 /* Extensions.swift */; };
 		C978950E239ADED900D65CB3 /* NewShapeModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978950D239ADED900D65CB3 /* NewShapeModalViewController.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C90A663D239DF099009FE630 /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
+		C90A663F239DF173009FE630 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		C9789509239ACFC500D65CB3 /* DesignTrayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTrayView.swift; sourceTree = "<group>"; };
 		C978950B239ACFF700D65CB3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C978950D239ADED900D65CB3 /* NewShapeModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShapeModalViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +61,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C90A663B239DF065009FE630 /* DesignTray */ = {
+			isa = PBXGroup;
+			children = (
+				C9789509239ACFC500D65CB3 /* DesignTrayView.swift */,
+				C9AD7075239D7DDF006153AB /* DesignTrayShapeItem.swift */,
+			);
+			path = DesignTray;
+			sourceTree = "<group>";
+		};
+		C90A663C239DF075009FE630 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				C9789513239B34CF00D65CB3 /* ModalShapeInputView.swift */,
+				C978950D239ADED900D65CB3 /* NewShapeModalViewController.swift */,
+				C9AD7073239C44E8006153AB /* SaveButton.swift */,
+				C978950F239ADF9F00D65CB3 /* ShapeSelectionSegmentedControl.swift */,
+				C9789511239AE02300D65CB3 /* ShapeSelectionControlItem.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
 		C9BBEF14238093EF0004F631 = {
 			isa = PBXGroup;
 			children = (
@@ -85,14 +110,11 @@
 				C9BBEF29238093F20004F631 /* Assets.xcassets */,
 				C9BBEF2B238093F20004F631 /* LaunchScreen.storyboard */,
 				C9BBEF2E238093F20004F631 /* Info.plist */,
-				C9789509239ACFC500D65CB3 /* DesignTrayView.swift */,
+				C90A663B239DF065009FE630 /* DesignTray */,
 				C978950B239ACFF700D65CB3 /* Extensions.swift */,
-				C9789513239B34CF00D65CB3 /* ModalShapeInputView.swift */,
-				C978950D239ADED900D65CB3 /* NewShapeModalViewController.swift */,
-				C9AD7073239C44E8006153AB /* SaveButton.swift */,
-				C978950F239ADF9F00D65CB3 /* ShapeSelectionSegmentedControl.swift */,
-				C9789511239AE02300D65CB3 /* ShapeSelectionControlItem.swift */,
-				C9AD7075239D7DDF006153AB /* DesignTrayShapeItem.swift */,
+				C90A663C239DF075009FE630 /* Modal */,
+				C90A663D239DF099009FE630 /* Rectangle.swift */,
+				C90A663F239DF173009FE630 /* Circle.swift */,
 			);
 			path = Kai;
 			sourceTree = "<group>";
@@ -173,6 +195,7 @@
 				C9AD7074239C44E8006153AB /* SaveButton.swift in Sources */,
 				C9BBEF21238093EF0004F631 /* AppDelegate.swift in Sources */,
 				C978950A239ACFC500D65CB3 /* DesignTrayView.swift in Sources */,
+				C90A6640239DF173009FE630 /* Circle.swift in Sources */,
 				C9BBEF37238096760004F631 /* Scene.swift in Sources */,
 				C9BBEF23238093EF0004F631 /* SceneDelegate.swift in Sources */,
 				C9BBEF35238095B80004F631 /* Grid.swift in Sources */,
@@ -181,6 +204,7 @@
 				C9789514239B34CF00D65CB3 /* ModalShapeInputView.swift in Sources */,
 				C9AD7076239D7DE0006153AB /* DesignTrayShapeItem.swift in Sources */,
 				C978950C239ACFF700D65CB3 /* Extensions.swift in Sources */,
+				C90A663E239DF099009FE630 /* Rectangle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

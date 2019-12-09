@@ -8,6 +8,22 @@
 
 import UIKit
 
+extension CGFloat {
+    func nearestMultiple(_ of: CGFloat) -> CGFloat {
+        var result = self + of / 2.0;
+        result -= result.truncatingRemainder(dividingBy: of)
+        print("\(self) -> \(result)")
+        return result
+    }
+}
+
+extension CGPoint {
+    func snapToGridLine() -> CGPoint {
+        return CGPoint(x: x.nearestMultiple(Scene.BLOCK_SIZE / 4),
+                       y: y.nearestMultiple(Scene.BLOCK_SIZE / 4))
+    }
+}
+
 extension UIColor {
     convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat? = nil) {
         self.init(red: r / 255.0, green: g / 255, blue: b / 255, alpha: a ?? 1)
