@@ -47,6 +47,8 @@ class DesignTrayView: UIView {
 
         setupViews()
         setupButtonTarget()
+
+        addDesignItem(DesignTrayShapeItemModel(name: "Rectangle", width: 25, length: 25))
     }
 
     required init?(coder: NSCoder) {

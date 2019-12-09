@@ -124,6 +124,10 @@ class DesignTrayShapeItem: UIView {
         } else if let d = model.diameter {
             dimensionsLabel.text = "\(d)'"
         }
+
+        if model.name == "Wall" {
+            shapeNameLabel.textColor = .black
+        }
         shapeNameLabel.text = model.name
         image.image = UIImage(named: "Design Tray \(model.name)")
         self.model = model

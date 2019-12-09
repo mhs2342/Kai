@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C90A663E239DF099009FE630 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A663D239DF099009FE630 /* Rectangle.swift */; };
 		C90A6640239DF173009FE630 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A663F239DF173009FE630 /* Circle.swift */; };
+		C90A6642239E9CB6009FE630 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A6641239E9CB6009FE630 /* Project.swift */; };
+		C90A6644239E9DFD009FE630 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A6643239E9DFD009FE630 /* Wall.swift */; };
+		C90A6646239EDD79009FE630 /* WallEditingTray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A6645239EDD79009FE630 /* WallEditingTray.swift */; };
 		C978950A239ACFC500D65CB3 /* DesignTrayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9789509239ACFC500D65CB3 /* DesignTrayView.swift */; };
 		C978950C239ACFF700D65CB3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978950B239ACFF700D65CB3 /* Extensions.swift */; };
 		C978950E239ADED900D65CB3 /* NewShapeModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978950D239ADED900D65CB3 /* NewShapeModalViewController.swift */; };
@@ -30,6 +33,9 @@
 /* Begin PBXFileReference section */
 		C90A663D239DF099009FE630 /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
 		C90A663F239DF173009FE630 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		C90A6641239E9CB6009FE630 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		C90A6643239E9DFD009FE630 /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
+		C90A6645239EDD79009FE630 /* WallEditingTray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallEditingTray.swift; sourceTree = "<group>"; };
 		C9789509239ACFC500D65CB3 /* DesignTrayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTrayView.swift; sourceTree = "<group>"; };
 		C978950B239ACFF700D65CB3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C978950D239ADED900D65CB3 /* NewShapeModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShapeModalViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +72,8 @@
 			children = (
 				C9789509239ACFC500D65CB3 /* DesignTrayView.swift */,
 				C9AD7075239D7DDF006153AB /* DesignTrayShapeItem.swift */,
+				C90A6641239E9CB6009FE630 /* Project.swift */,
+				C90A6645239EDD79009FE630 /* WallEditingTray.swift */,
 			);
 			path = DesignTray;
 			sourceTree = "<group>";
@@ -115,6 +123,7 @@
 				C90A663C239DF075009FE630 /* Modal */,
 				C90A663D239DF099009FE630 /* Rectangle.swift */,
 				C90A663F239DF173009FE630 /* Circle.swift */,
+				C90A6643239E9DFD009FE630 /* Wall.swift */,
 			);
 			path = Kai;
 			sourceTree = "<group>";
@@ -192,6 +201,7 @@
 			files = (
 				C9BBEF25238093EF0004F631 /* ViewController.swift in Sources */,
 				C978950E239ADED900D65CB3 /* NewShapeModalViewController.swift in Sources */,
+				C90A6646239EDD79009FE630 /* WallEditingTray.swift in Sources */,
 				C9AD7074239C44E8006153AB /* SaveButton.swift in Sources */,
 				C9BBEF21238093EF0004F631 /* AppDelegate.swift in Sources */,
 				C978950A239ACFC500D65CB3 /* DesignTrayView.swift in Sources */,
@@ -205,6 +215,8 @@
 				C9AD7076239D7DE0006153AB /* DesignTrayShapeItem.swift in Sources */,
 				C978950C239ACFF700D65CB3 /* Extensions.swift in Sources */,
 				C90A663E239DF099009FE630 /* Rectangle.swift in Sources */,
+				C90A6642239E9CB6009FE630 /* Project.swift in Sources */,
+				C90A6644239E9DFD009FE630 /* Wall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +361,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U3465V32BF;
+				DEVELOPMENT_TEAM = T7DCTRKWSH;
 				INFOPLIST_FILE = Kai/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -367,7 +379,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U3465V32BF;
+				DEVELOPMENT_TEAM = T7DCTRKWSH;
 				INFOPLIST_FILE = Kai/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

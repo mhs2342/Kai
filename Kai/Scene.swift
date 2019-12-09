@@ -8,11 +8,19 @@
 
 import SpriteKit
 
+protocol ShapeSelectionDelegate: class {
+    func wallSegmentSelected(_ node: SKShapeNode)
+    func wallSegmentDeselected()
+}
+
 class Scene: SKScene {
 
-    static let BLOCK_SIZE: CGFloat = 40.0
-    static let TABLE_SCALE_FACTOR: CGFloat = BLOCK_SIZE
+    static let BLOCK_SIZE: CGFloat = 20.0
+    static let TABLE_SCALE_FACTOR: CGFloat = BLOCK_SIZE / 2
     private var movingNode: SKNode?
+    private var selectedNode: SKShapeNode?
+    weak var editingDelegate: ShapeSelectionDelegate?
+
     override init(size: CGSize) {
         super.init(size: size)
         isUserInteractionEnabled = true
@@ -23,7 +31,7 @@ class Scene: SKScene {
     }
 
     override func didMove(to: SKView) {
-        if let grid = Grid(blockSize: Scene.BLOCK_SIZE, rows: 50, cols: 50) {
+        if let grid = Grid(blockSize: Scene.BLOCK_SIZE, rows: 80, cols: 80) {
             grid.position = CGPoint (x:frame.midX, y:frame.midY)
             addChild(grid)
         }
@@ -34,6 +42,29 @@ class Scene: SKScene {
 
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureRecognized(_:)))
         to.addGestureRecognizer(longPressGesture)
+
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchGestureRecognized(_:)))
+        to.addGestureRecognizer(pinchGesture)
+    }
+
+    @objc func pinchGestureRecognized(_ gestureRecognizer: UIPinchGestureRecognizer) {
+        if let wall = self.selectedNode {
+            if gestureRecognizer.state == .ended {
+                let currentScale: CGFloat = 0.3
+                var newScale = currentScale * gestureRecognizer.scale
+                if newScale < 1 {
+                    newScale = 1
+                }
+                if newScale > 6 {
+                    newScale = 6
+                }
+                let scaleAction = SKAction.scaleX(by: newScale, y: 1, duration: 0.1)
+                wall.run(scaleAction)
+            }
+
+
+        }
+
     }
 
     @objc func longPressGestureRecognized(_ gestureRecognizer: UILongPressGestureRecognizer) {
@@ -59,8 +90,15 @@ class Scene: SKScene {
 
             let touchedNodes = self.nodes(at: location)
             for node in touchedNodes.reversed() {
-                if node is SKShapeNode {
+                if node is Wall {
+                    self.selectedNode = node as? SKShapeNode
                     self.movingNode = node
+                    self.editingDelegate?.wallSegmentSelected(selectedNode!)
+                } else if node is SKShapeNode {
+                    self.movingNode = node
+                    self.editingDelegate?.wallSegmentDeselected()
+                } else {
+                    self.editingDelegate?.wallSegmentDeselected()
                 }
             }
         }
@@ -107,16 +145,19 @@ class Scene: SKScene {
     }
 
     func applyRotationForViewAtLocation(point: CGPoint, rotation: CGFloat) {
-        let sceneLocation = convertPoint(fromView: point)
-        if let node = nodes(at: sceneLocation).first {
-            let action = SKAction.rotate(byAngle: rotation, duration: 0.1)
-            node.run(action)
+        guard let selectedNode = self.selectedNode,
+            !(selectedNode is Grid) else {
+            return
         }
+        let action = SKAction.rotate(byAngle: rotation, duration: 0.1)
+        let centerOfRotation = convertPoint(fromView: point)
+        selectedNode.position = centerOfRotation
+        selectedNode.run(action)
     }
 
     func deleteNodeAt(point: CGPoint) {
         let sceneLocation = convertPoint(fromView: point)
-        if let node = nodes(at: sceneLocation).first {
+        if let node = nodes(at: sceneLocation).first, !(node is Grid) {
             node.removeFromParent()
         }
     }
@@ -125,4 +166,32 @@ class Scene: SKScene {
         checkforIntersections(node)
         addChild(node)
     }
+}
+
+extension Scene: WallEditingDelegate {
+    func rotateWallSegment() {
+        if let selected = selectedNode, selected is Wall {
+            let action = SKAction.rotate(byAngle: CGFloat.pi / 4, duration: 0.2)
+            selected.run(action)
+        }
+    }
+
+    func adjustlength(feet: Double) {
+        if var selected = selectedNode as? Wall {
+            let newLength = (CGFloat(feet) * Scene.TABLE_SCALE_FACTOR).nearestMultiple(Scene.BLOCK_SIZE / 4)
+            if selected.length - newLength == selected.previousLength {
+                selected.removeFromParent()
+                selected = Wall(start: selected.position, length: selected.length - newLength)
+                self.selectedNode = selected
+                scene?.addChild(selected)
+            } else {
+                selected.length += CGFloat(feet) * Scene.TABLE_SCALE_FACTOR
+            }
+//            selectedNode?.removeFromParent()
+//            scene?.addChild(self.selectedNode!)
+
+        }
+    }
+
+
 }

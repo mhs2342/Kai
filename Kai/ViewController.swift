@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var camera = SKCameraNode()
     var scaleFactor: CGFloat = 1.0
     var designTray = DesignTrayView()
+    var wallEditingTray = WallEditingTray()
     static let SCALE_TO_SIZE: CGFloat = 10.0
 
     override func viewDidLoad() {
@@ -29,9 +30,11 @@ class ViewController: UIViewController {
 
         scene.camera = camera
         scene.addChild(camera)
+        scene.editingDelegate = self
         skview.presentScene(scene)
         view.addSubview(skview)
         view.addSubview(designTray)
+        view.addSubview(wallEditingTray)
         setupSubviews()
 
         designTray.delegate = self
@@ -41,6 +44,12 @@ class ViewController: UIViewController {
     func setupSubviews() {
         designTray.anchor(trailing: view.safeAreaLayoutGuide.trailingAnchor,
                           centerY: view.safeAreaLayoutGuide.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16))
+
+        wallEditingTray.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                               centerX: view.safeAreaLayoutGuide.centerXAnchor)
+        wallEditingTray.alpha = 0
+        wallEditingTray.isHidden = true
+        wallEditingTray.delegate = self
     }
 
     func createNodeFromModel(_ model: DesignTrayShapeItemModel, point: CGPoint) -> SKShapeNode? {
@@ -49,6 +58,9 @@ class ViewController: UIViewController {
             guard let diameter = model.diameter else { return  nil}
             let circle = Circle(diameter: CGFloat(diameter) * Scene.TABLE_SCALE_FACTOR, point: placement) // Size of Circle
             return circle
+        } else if model.name == "Wall" {
+            let wall = Wall(start: placement, length: 2.0 * Scene.TABLE_SCALE_FACTOR)
+            return wall
         } else {
             guard let length = model.length, let width = model.width else { return nil }
             let rect = Rectangle(rect: CGRect(x: placement.x,
@@ -61,6 +73,33 @@ class ViewController: UIViewController {
     }
 
 
+}
+
+extension ViewController: ShapeSelectionDelegate {
+    func wallSegmentSelected(_ node: SKShapeNode) {
+        UIView.animate(withDuration: 0.3) {
+            self.wallEditingTray.isHidden = false
+            self.wallEditingTray.alpha = 1.0
+        }
+    }
+
+    func wallSegmentDeselected() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.wallEditingTray.alpha = 1.0
+        }, completion: { done in
+            self.wallEditingTray.isHidden = false
+        })
+    }
+}
+
+extension ViewController: WallEditingDelegate {
+    func rotateWallSegment() {
+        scene.rotateWallSegment()
+    }
+
+    func adjustlength(feet: Double) {
+        scene.adjustlength(feet: feet)
+    }
 }
 
 extension ViewController: DesignTrayDelegate {
