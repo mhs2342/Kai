@@ -54,6 +54,13 @@ final class DesignTrayShapeItemModel: NSObject, Codable, NSItemProviderWriting, 
     var length: Double?
     var diameter: Double?
 
+    convenience init(_ customItem: CustomDesignItem) {
+        self.init(name: customItem.name,
+                  width: customItem.width == 0 ? nil : customItem.width,
+                  length: customItem.length == 0 ? nil : customItem.length,
+                  diameter: customItem.diameter == 0 ? nil : customItem.diameter)
+    }
+
     init(name: String, width: Double? = nil, length: Double? = nil, diameter: Double? = nil) {
         self.name = name
         self.width = width

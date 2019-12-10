@@ -42,6 +42,14 @@ class Wall: SKShapeNode {
 
 
 class RectangularWall: Rectangle {
+    convenience init(_ shape: Shape) throws {
+        let rect = NSCoder.cgRect(for: shape.frame)
+        if shape.name != "Rectangular Wall" {
+            throw ShapeError.DecodingFailure
+        }
+        self.init(rect: rect)
+        self.shape = shape
+    }
     override init(rect: CGRect) {
         super.init(rect: rect)
 
@@ -51,5 +59,12 @@ class RectangularWall: Rectangle {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func populateShape(_ shape: Shape) -> Shape {
+        let shape = super.populateShape(shape)
+        shape.name = "Rectangular Wall"
+        self.shape = shape
+        return shape
     }
 }

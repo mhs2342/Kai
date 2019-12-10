@@ -18,7 +18,7 @@ extension Project {
     }
 
     @NSManaged public var name: String
-    @NSManaged public var designs: NSSet?
+    @NSManaged public var designs: NSSet
 
 }
 

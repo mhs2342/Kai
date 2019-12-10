@@ -11,7 +11,7 @@ import SpriteKit
 import MobileCoreServices
 
 class DesignViewController: UIViewController {
-
+    var design: Design!
     var skview: SKView!
     var scene: Scene!
     var camera = SKCameraNode()
@@ -25,6 +25,7 @@ class DesignViewController: UIViewController {
         skview = SKView(frame: view.bounds)
         skview.addInteraction(UIDropInteraction(delegate: self))
         scene = Scene(size: skview.frame.size)
+        scene.design = design
         scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         camera.position = CGPoint(x: 0.5, y: 0.5)
 
@@ -39,6 +40,7 @@ class DesignViewController: UIViewController {
 
         designTray.delegate = self
 
+        loadState()
     }
 
     func setupSubviews() {
@@ -73,6 +75,15 @@ class DesignViewController: UIViewController {
                                                   height: CGFloat(length) * Scene.TABLE_SCALE_FACTOR))
             return rect
 
+        }
+    }
+
+    func loadState() {
+        if let designItems = design.designItems as? Set<CustomDesignItem> {
+            navigationItem.title = design.name
+            for item in designItems {
+                designTray.addDesignItem(DesignTrayShapeItemModel(item))
+            }
         }
     }
 
@@ -118,6 +129,7 @@ extension DesignViewController: DesignTrayDelegate {
 extension DesignViewController: NewShapeModalViewDelegate {
     func newShapeModalViewDelegate(add shape: DesignTrayShapeItemModel) {
         designTray.addDesignItem(shape)
+        ProjectDataManager.shared.addDesignItem(shape, design: design)
     }
 }
 

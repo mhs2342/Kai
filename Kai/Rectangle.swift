@@ -8,7 +8,18 @@
 
 import SpriteKit
 
-class Rectangle: SKShapeNode {
+class Rectangle: SKShapeNode, ShapeRepresentable {
+    var shape: Shape?
+
+    convenience init(_ shape: Shape) throws {
+        let rect = NSCoder.cgRect(for: shape.frame)
+        if shape.name != "Rectangle" {
+            throw ShapeError.DecodingFailure
+        }
+        self.init(rect: rect)
+        self.shape = shape
+    }
+
     init(rect: CGRect) {
         super.init()
         self.path = CGPath(rect: rect, transform: nil)
@@ -19,5 +30,13 @@ class Rectangle: SKShapeNode {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func populateShape(_ shape: Shape) -> Shape {
+        shape.frame = NSCoder.string(for: self.calculateAccumulatedFrame())
+        shape.name = "Rectangle"
+        shape.radius = 0.0
+        self.shape = shape
+        return shape
     }
 }

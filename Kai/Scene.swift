@@ -14,7 +14,11 @@ protocol ShapeSelectionDelegate: class {
 }
 
 class Scene: SKScene {
-
+    var design: Design! {
+        didSet {
+            populateDesign()
+        }
+    }
     static let BLOCK_SIZE: CGFloat = 20.0
     static let TABLE_SCALE_FACTOR: CGFloat = BLOCK_SIZE / 2
     private var movingNode: SKNode?
@@ -33,7 +37,7 @@ class Scene: SKScene {
     override func didMove(to: SKView) {
         if let grid = Grid(blockSize: Scene.BLOCK_SIZE, rows: 80, cols: 80) {
             grid.position = CGPoint (x:frame.midX, y:frame.midY)
-            addChild(grid)
+            insertChild(grid, at: 0)
         }
         backgroundColor = .white
 
@@ -116,6 +120,7 @@ class Scene: SKScene {
         if let node = movingNode {
             checkforIntersections(node)
         }
+        
         self.movingNode = nil
     }
 
@@ -123,6 +128,11 @@ class Scene: SKScene {
         if let touch = touches.first, let node = self.movingNode {
             let touchLocation = touch.location(in: self)
             node.position = touchLocation.snapToGridLine()
+            if let representable = node as? ShapeRepresentable,
+                let shape = representable.shape {
+                shape.frame = NSCoder.string(for: node.calculateAccumulatedFrame())
+                ProjectDataManager.shared.updateShape(design, shape)
+            }
         }
     }
 
@@ -160,17 +170,42 @@ class Scene: SKScene {
         let sceneLocation = convertPoint(fromView: point)
         if let node = nodes(at: sceneLocation).first, !(node is Grid) {
             node.removeFromParent()
+            if let representable = node as? ShapeRepresentable, let shape = representable.shape {
+                ProjectDataManager.shared.removeShapeFromDesign(shape, design)
+            }
         }
+        
     }
 
     func addNewNode(_ node: SKShapeNode) {
         checkforIntersections(node)
+        if let representable = node as? ShapeRepresentable {
+            var shape = ProjectDataManager.shared.createNewShape()
+            shape = representable.populateShape(shape)
+            ProjectDataManager.shared.addShapeToDesign(shape, design: design)
+        }
+
         if node is RectangularWall {
-            insertChild(node, at: 0)
+            insertChild(node, at: 1)
         } else {
             addChild(node)
         }
 
+    }
+
+    func populateDesign() {
+        if let shapes = design.shapes as? Set<Shape> {
+            for shape in shapes {
+                if let circle = try? Circle(shape) {
+                    scene?.addChild(circle)
+                } else if let wall = try? RectangularWall(shape) {
+                    scene?.addChild(wall)
+                } else if let rectangle = try? Rectangle(shape) {
+                    scene?.addChild(rectangle)
+                }
+
+            }
+        }
     }
 }
 
@@ -198,6 +233,4 @@ extension Scene: WallEditingDelegate {
 
         }
     }
-
-
 }

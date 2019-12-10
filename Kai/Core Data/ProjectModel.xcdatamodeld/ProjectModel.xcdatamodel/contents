@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CustomDesignItem" representedClassName="CustomDesignItem" syncable="YES">
+        <attribute name="diameter" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="length" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="width" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="design" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Design" inverseName="designItems" inverseEntity="Design"/>
+    </entity>
+    <entity name="Design" representedClassName="Design" syncable="YES">
+        <attribute name="lastAccessed" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="designItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CustomDesignItem" inverseName="design" inverseEntity="CustomDesignItem"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="designs" inverseEntity="Project"/>
+        <relationship name="shapes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Shape" inverseName="design" inverseEntity="Shape"/>
+    </entity>
+    <entity name="Project" representedClassName="Project" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="designs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Design" inverseName="project" inverseEntity="Design"/>
+    </entity>
+    <entity name="Shape" representedClassName="Shape" syncable="YES">
+        <attribute name="frame" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="radius" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="design" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Design" inverseName="shapes" inverseEntity="Design"/>
+    </entity>
+    <elements>
+        <element name="CustomDesignItem" positionX="216.33203125" positionY="54.86328125" width="128" height="118"/>
+        <element name="Design" positionX="-47.984375" positionY="51.1015625" width="128" height="118"/>
+        <element name="Project" positionX="-259" positionY="22.390625" width="128" height="73"/>
+        <element name="Shape" positionX="173.23046875" positionY="222.74609375" width="128" height="103"/>
+    </elements>
+</model>

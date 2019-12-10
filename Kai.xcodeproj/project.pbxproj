@@ -24,12 +24,16 @@
 		C90A665F239F7B52009FE630 /* Design+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A665B239F7B52009FE630 /* Design+CoreDataProperties.swift */; };
 		C9769F8E239F905F00793584 /* NewProjectPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9769F8D239F905F00793584 /* NewProjectPopover.storyboard */; };
 		C9769F90239F920800793584 /* NewProjectPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9769F8F239F920800793584 /* NewProjectPopOverViewController.swift */; };
+		C9769F93239FDC7000793584 /* Shape+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9769F91239FDC7000793584 /* Shape+CoreDataClass.swift */; };
 		C978950A239ACFC500D65CB3 /* DesignTrayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9789509239ACFC500D65CB3 /* DesignTrayView.swift */; };
 		C978950C239ACFF700D65CB3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978950B239ACFF700D65CB3 /* Extensions.swift */; };
 		C978950E239ADED900D65CB3 /* NewShapeModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978950D239ADED900D65CB3 /* NewShapeModalViewController.swift */; };
 		C9789510239ADF9F00D65CB3 /* ShapeSelectionSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978950F239ADF9F00D65CB3 /* ShapeSelectionSegmentedControl.swift */; };
 		C9789512239AE02300D65CB3 /* ShapeSelectionControlItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9789511239AE02300D65CB3 /* ShapeSelectionControlItem.swift */; };
 		C9789514239B34CF00D65CB3 /* ModalShapeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9789513239B34CF00D65CB3 /* ModalShapeInputView.swift */; };
+		C99AEA2E239FE2E2001CC7C6 /* Shape+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AEA2D239FE2E2001CC7C6 /* Shape+CoreDataProperties.swift */; };
+		C99AEA31239FEF57001CC7C6 /* CustomDesignItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AEA2F239FEF57001CC7C6 /* CustomDesignItem+CoreDataClass.swift */; };
+		C99AEA32239FEF57001CC7C6 /* CustomDesignItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AEA30239FEF57001CC7C6 /* CustomDesignItem+CoreDataProperties.swift */; };
 		C9AD7074239C44E8006153AB /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AD7073239C44E8006153AB /* SaveButton.swift */; };
 		C9AD7076239D7DE0006153AB /* DesignTrayShapeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AD7075239D7DDF006153AB /* DesignTrayShapeItem.swift */; };
 		C9BBEF21238093EF0004F631 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BBEF20238093EF0004F631 /* AppDelegate.swift */; };
@@ -60,12 +64,16 @@
 		C90A665B239F7B52009FE630 /* Design+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C9769F8D239F905F00793584 /* NewProjectPopover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewProjectPopover.storyboard; sourceTree = "<group>"; };
 		C9769F8F239F920800793584 /* NewProjectPopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectPopOverViewController.swift; sourceTree = "<group>"; };
+		C9769F91239FDC7000793584 /* Shape+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shape+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C9789509239ACFC500D65CB3 /* DesignTrayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTrayView.swift; sourceTree = "<group>"; };
 		C978950B239ACFF700D65CB3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C978950D239ADED900D65CB3 /* NewShapeModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShapeModalViewController.swift; sourceTree = "<group>"; };
 		C978950F239ADF9F00D65CB3 /* ShapeSelectionSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeSelectionSegmentedControl.swift; sourceTree = "<group>"; };
 		C9789511239AE02300D65CB3 /* ShapeSelectionControlItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeSelectionControlItem.swift; sourceTree = "<group>"; };
 		C9789513239B34CF00D65CB3 /* ModalShapeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalShapeInputView.swift; sourceTree = "<group>"; };
+		C99AEA2D239FE2E2001CC7C6 /* Shape+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shape+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C99AEA2F239FEF57001CC7C6 /* CustomDesignItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomDesignItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C99AEA30239FEF57001CC7C6 /* CustomDesignItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomDesignItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C9AD7073239C44E8006153AB /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		C9AD7075239D7DDF006153AB /* DesignTrayShapeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTrayShapeItem.swift; sourceTree = "<group>"; };
 		C9BBEF1D238093EF0004F631 /* Kai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kai.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +121,23 @@
 			path = Modal;
 			sourceTree = "<group>";
 		};
+		C99AEA33239FEF66001CC7C6 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				C90A6651239F6C02009FE630 /* ProjectModel.xcdatamodeld */,
+				C90A6654239F70C3009FE630 /* ProjectDataManager.swift */,
+				C90A6658239F7B52009FE630 /* Project+CoreDataClass.swift */,
+				C90A6659239F7B52009FE630 /* Project+CoreDataProperties.swift */,
+				C90A665A239F7B52009FE630 /* Design+CoreDataClass.swift */,
+				C90A665B239F7B52009FE630 /* Design+CoreDataProperties.swift */,
+				C9769F91239FDC7000793584 /* Shape+CoreDataClass.swift */,
+				C99AEA2D239FE2E2001CC7C6 /* Shape+CoreDataProperties.swift */,
+				C99AEA2F239FEF57001CC7C6 /* CustomDesignItem+CoreDataClass.swift */,
+				C99AEA30239FEF57001CC7C6 /* CustomDesignItem+CoreDataProperties.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		C9BBEF14238093EF0004F631 = {
 			isa = PBXGroup;
 			children = (
@@ -154,12 +179,7 @@
 				C90A6647239F3AC7009FE630 /* ProjectsCollectionViewController.swift */,
 				C90A6649239F3B02009FE630 /* ProjectCollectionViewCell.xib */,
 				C90A664B239F3C36009FE630 /* ProjectCollectionViewCell.swift */,
-				C90A6651239F6C02009FE630 /* ProjectModel.xcdatamodeld */,
-				C90A6654239F70C3009FE630 /* ProjectDataManager.swift */,
-				C90A6658239F7B52009FE630 /* Project+CoreDataClass.swift */,
-				C90A6659239F7B52009FE630 /* Project+CoreDataProperties.swift */,
-				C90A665A239F7B52009FE630 /* Design+CoreDataClass.swift */,
-				C90A665B239F7B52009FE630 /* Design+CoreDataProperties.swift */,
+				C99AEA33239FEF66001CC7C6 /* Core Data */,
 			);
 			path = Kai;
 			sourceTree = "<group>";
@@ -255,16 +275,20 @@
 				C9BBEF23238093EF0004F631 /* SceneDelegate.swift in Sources */,
 				C9BBEF35238095B80004F631 /* Grid.swift in Sources */,
 				C9789512239AE02300D65CB3 /* ShapeSelectionControlItem.swift in Sources */,
+				C9769F93239FDC7000793584 /* Shape+CoreDataClass.swift in Sources */,
 				C9789510239ADF9F00D65CB3 /* ShapeSelectionSegmentedControl.swift in Sources */,
+				C99AEA31239FEF57001CC7C6 /* CustomDesignItem+CoreDataClass.swift in Sources */,
 				C90A6653239F6C02009FE630 /* ProjectModel.xcdatamodeld in Sources */,
 				C9789514239B34CF00D65CB3 /* ModalShapeInputView.swift in Sources */,
 				C9AD7076239D7DE0006153AB /* DesignTrayShapeItem.swift in Sources */,
 				C978950C239ACFF700D65CB3 /* Extensions.swift in Sources */,
 				C90A663E239DF099009FE630 /* Rectangle.swift in Sources */,
+				C99AEA32239FEF57001CC7C6 /* CustomDesignItem+CoreDataProperties.swift in Sources */,
 				C90A6655239F70C3009FE630 /* ProjectDataManager.swift in Sources */,
 				C90A665E239F7B52009FE630 /* Design+CoreDataClass.swift in Sources */,
 				C90A6644239E9DFD009FE630 /* Wall.swift in Sources */,
 				C90A665C239F7B52009FE630 /* Project+CoreDataClass.swift in Sources */,
+				C99AEA2E239FE2E2001CC7C6 /* Shape+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
