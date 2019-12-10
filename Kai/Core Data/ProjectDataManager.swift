@@ -22,6 +22,7 @@ class ProjectDataManager {
             let design = Design(context: context)
             design.lastAccessed = Date()
             design.name = designName
+            design.project = project
             project.addToDesigns(design)
         }
         do {
@@ -31,6 +32,20 @@ class ProjectDataManager {
             print("Something went wrong \(error)")
         }
 
+    }
+
+    func createNewDesign(_ project: Project, designName: String) {
+        let design = Design(context: context)
+        design.lastAccessed = Date()
+        design.name = designName
+        project.addToDesigns(design)
+        design.project = project
+        do {
+            try context.save()
+            print("Created New Design")
+        } catch {
+            print("Something went wrong \(error)")
+        }
     }
 
     func createNewShape() -> Shape {

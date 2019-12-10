@@ -21,4 +21,10 @@ class ProjectCollectionViewCell: UICollectionViewCell {
         clipsToBounds = true
 
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        designNameLabel.text = nil
+        lastOpenedLabel.text = nil
+    }
 }

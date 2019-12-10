@@ -18,6 +18,7 @@ class ProjectsCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
         collectionView.collectionViewLayout = createLayout()
         let headerNib = UINib(nibName: "ProjectSectionHeaderView", bundle: nil)
         collectionView.register(headerNib, forSupplementaryViewOfKind: "header", withReuseIdentifier: "ProjectSectionHeaderView")
@@ -40,7 +41,8 @@ class ProjectsCollectionViewController: UICollectionViewController {
 
     @objc private func createNewProject(_ sender: UIBarButtonItem) {
         let storyboard : UIStoryboard = UIStoryboard(name: "NewProjectPopover", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "NewProjectPopOverViewController")
+        let vc = storyboard.instantiateViewController(withIdentifier: "NewProjectPopOverViewController") as! NewProjectPopOverViewController
+        vc.delegate = self
         vc.modalPresentationStyle = .popover
         let popover: UIPopoverPresentationController = vc.popoverPresentationController!
         popover.barButtonItem = sender
@@ -56,7 +58,7 @@ class ProjectsCollectionViewController: UICollectionViewController {
 
 
     private func createLayout() -> UICollectionViewCompositionalLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .fractionalHeight(1.0))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(0.25), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
 
@@ -64,9 +66,11 @@ class ProjectsCollectionViewController: UICollectionViewController {
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension:.fractionalHeight(0.3))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.interItemSpacing = .flexible(8.0)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
 
 
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .estimated(44))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .estimated(0.2), heightDimension: .estimated(44))
 
 
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
@@ -83,7 +87,7 @@ class ProjectsCollectionViewController: UICollectionViewController {
     }
 
     func designForIndexPath(_ indexPath: IndexPath) -> Design? {
-        guard let set = projects[indexPath.row].designs as? Set<Design> else { return nil }
+        guard let set = projects[indexPath.section].designs as? Set<Design> else { return nil }
         let designs = Array(set)
         return designs[indexPath.row]
     }
@@ -103,9 +107,7 @@ class ProjectsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProjectCollectionViewCell
-        guard let set = projects[indexPath.row].designs as? Set<Design> else { return UICollectionViewCell() }
-        let designs = Array(set)
-        let design = designs[indexPath.row]
+        guard let design = designForIndexPath(indexPath) else { return UICollectionViewCell() }
         cell.designNameLabel.text = design.name
         cell.lastOpenedLabel.text = design.lastAccessedAsString
         // Configure the cell
@@ -127,6 +129,7 @@ class ProjectsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ProjectSectionHeaderView", for: indexPath) as? ProjectSectionHeaderView {
             header.projectNameLabel.text = projects[indexPath.section].name
+            header.delegate = self
             return header
         }
 
@@ -134,4 +137,41 @@ class ProjectsCollectionViewController: UICollectionViewController {
         header.projectNameLabel.text = projects[indexPath.section].name
         return header
     }
+
+
+}
+
+extension ProjectsCollectionViewController: ProjectSectionHeaderViewDelegate {
+    func newDesignButtonWasPressed(_ projectName: String) {
+        let alertController = UIAlertController(title: "New Design", message: "Enter your new design name", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "Design Name"
+        }
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController,
+                let textField = alertController.textFields?.first else { return }
+
+            guard let project = self.projects.first(where: { $0.name == projectName }),
+                let text = textField.text else { return }
+            ProjectDataManager.shared.createNewDesign(project, designName: text)
+            self.collectionView.reloadData()
+        }
+        alertController.addAction(confirmAction)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension ProjectsCollectionViewController: NewProjectPopOverViewControllerDelegate {
+    func savedProject() {
+        projects = dataManager.getAllProjects()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+
+
 }

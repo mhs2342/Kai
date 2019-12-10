@@ -8,11 +8,15 @@
 
 import UIKit
 
+protocol NewProjectPopOverViewControllerDelegate: class {
+    func savedProject()
+}
 class NewProjectPopOverViewController: UIViewController {
     private var dataManager = ProjectDataManager.shared
 
     @IBOutlet var designNameLabel: UITextField!
     @IBOutlet var projectNameLabel: UITextField!
+    weak var delegate: NewProjectPopOverViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -25,6 +29,7 @@ class NewProjectPopOverViewController: UIViewController {
         guard let projectName = self.projectNameLabel.text,
             let designName = self.designNameLabel.text else { return }
         dataManager.createNewProject(projectName, designName)
+        delegate?.savedProject()
     }
 
     override func viewWillAppear(_ animated: Bool) {

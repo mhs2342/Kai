@@ -127,7 +127,9 @@ class Scene: SKScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first, let node = self.movingNode {
             let touchLocation = touch.location(in: self)
-            node.position = touchLocation.snapToGridLine()
+
+            let action = SKAction.move(to: touchLocation.snapToGridLine(), duration: 0.1)
+            node.run(action)
             if let representable = node as? ShapeRepresentable,
                 let shape = representable.shape {
                 shape.frame = NSCoder.string(for: node.calculateAccumulatedFrame())
