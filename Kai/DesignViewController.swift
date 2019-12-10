@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import MobileCoreServices
 
-class ViewController: UIViewController {
+class DesignViewController: UIViewController {
 
     var skview: SKView!
     var scene: Scene!
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: ShapeSelectionDelegate {
+extension DesignViewController: ShapeSelectionDelegate {
     func wallSegmentSelected(_ node: SKShapeNode) {
         UIView.animate(withDuration: 0.3) {
             self.wallEditingTray.isHidden = false
@@ -96,7 +96,7 @@ extension ViewController: ShapeSelectionDelegate {
     }
 }
 
-extension ViewController: WallEditingDelegate {
+extension DesignViewController: WallEditingDelegate {
     func rotateWallSegment() {
         scene.rotateWallSegment()
     }
@@ -106,7 +106,7 @@ extension ViewController: WallEditingDelegate {
     }
 }
 
-extension ViewController: DesignTrayDelegate {
+extension DesignViewController: DesignTrayDelegate {
     func addNewShapePressed() {
         let vc = NewShapeModalViewController()
         vc.delegate = self
@@ -115,13 +115,13 @@ extension ViewController: DesignTrayDelegate {
     }
 }
 
-extension ViewController: NewShapeModalViewDelegate {
+extension DesignViewController: NewShapeModalViewDelegate {
     func newShapeModalViewDelegate(add shape: DesignTrayShapeItemModel) {
         designTray.addDesignItem(shape)
     }
 }
 
-extension ViewController: UIDropInteractionDelegate {
+extension DesignViewController: UIDropInteractionDelegate {
     func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
         return session.canLoadObjects(ofClass: DesignTrayShapeItemModel.self)
     }
