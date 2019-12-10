@@ -6,12 +6,23 @@
 //  Copyright © 2019 sanch. All rights reserved.
 //
 
+import CoreData
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    static var persistentContainer: NSPersistentContainer {
+        return (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    }
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "ProjectModel")
+        container.loadPersistentStores { (storeDescription, error) in
+            if let error = error as? NSError {
+                fatalError("Unresolved Error \(error), \(error.userInfo)")
+            }
+        }
+        return container
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

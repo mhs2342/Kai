@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C90A663E239DF099009FE630 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A663D239DF099009FE630 /* Rectangle.swift */; };
 		C90A6640239DF173009FE630 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A663F239DF173009FE630 /* Circle.swift */; };
-		C90A6642239E9CB6009FE630 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A6641239E9CB6009FE630 /* Project.swift */; };
 		C90A6644239E9DFD009FE630 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A6643239E9DFD009FE630 /* Wall.swift */; };
 		C90A6646239EDD79009FE630 /* WallEditingTray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A6645239EDD79009FE630 /* WallEditingTray.swift */; };
 		C90A6648239F3AC7009FE630 /* ProjectsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A6647239F3AC7009FE630 /* ProjectsCollectionViewController.swift */; };
@@ -17,6 +16,14 @@
 		C90A664C239F3C36009FE630 /* ProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A664B239F3C36009FE630 /* ProjectCollectionViewCell.swift */; };
 		C90A664E239F50D1009FE630 /* ProjectSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A664D239F50D1009FE630 /* ProjectSectionHeaderView.swift */; };
 		C90A6650239F50E5009FE630 /* ProjectSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C90A664F239F50E5009FE630 /* ProjectSectionHeaderView.xib */; };
+		C90A6653239F6C02009FE630 /* ProjectModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C90A6651239F6C02009FE630 /* ProjectModel.xcdatamodeld */; };
+		C90A6655239F70C3009FE630 /* ProjectDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A6654239F70C3009FE630 /* ProjectDataManager.swift */; };
+		C90A665C239F7B52009FE630 /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A6658239F7B52009FE630 /* Project+CoreDataClass.swift */; };
+		C90A665D239F7B52009FE630 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A6659239F7B52009FE630 /* Project+CoreDataProperties.swift */; };
+		C90A665E239F7B52009FE630 /* Design+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A665A239F7B52009FE630 /* Design+CoreDataClass.swift */; };
+		C90A665F239F7B52009FE630 /* Design+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90A665B239F7B52009FE630 /* Design+CoreDataProperties.swift */; };
+		C9769F8E239F905F00793584 /* NewProjectPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9769F8D239F905F00793584 /* NewProjectPopover.storyboard */; };
+		C9769F90239F920800793584 /* NewProjectPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9769F8F239F920800793584 /* NewProjectPopOverViewController.swift */; };
 		C978950A239ACFC500D65CB3 /* DesignTrayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9789509239ACFC500D65CB3 /* DesignTrayView.swift */; };
 		C978950C239ACFF700D65CB3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978950B239ACFF700D65CB3 /* Extensions.swift */; };
 		C978950E239ADED900D65CB3 /* NewShapeModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978950D239ADED900D65CB3 /* NewShapeModalViewController.swift */; };
@@ -38,7 +45,6 @@
 /* Begin PBXFileReference section */
 		C90A663D239DF099009FE630 /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
 		C90A663F239DF173009FE630 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
-		C90A6641239E9CB6009FE630 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		C90A6643239E9DFD009FE630 /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		C90A6645239EDD79009FE630 /* WallEditingTray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallEditingTray.swift; sourceTree = "<group>"; };
 		C90A6647239F3AC7009FE630 /* ProjectsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +52,14 @@
 		C90A664B239F3C36009FE630 /* ProjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCollectionViewCell.swift; sourceTree = "<group>"; };
 		C90A664D239F50D1009FE630 /* ProjectSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSectionHeaderView.swift; sourceTree = "<group>"; };
 		C90A664F239F50E5009FE630 /* ProjectSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectSectionHeaderView.xib; sourceTree = "<group>"; };
+		C90A6652239F6C02009FE630 /* ProjectModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProjectModel.xcdatamodel; sourceTree = "<group>"; };
+		C90A6654239F70C3009FE630 /* ProjectDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDataManager.swift; sourceTree = "<group>"; };
+		C90A6658239F7B52009FE630 /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C90A6659239F7B52009FE630 /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C90A665A239F7B52009FE630 /* Design+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C90A665B239F7B52009FE630 /* Design+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C9769F8D239F905F00793584 /* NewProjectPopover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewProjectPopover.storyboard; sourceTree = "<group>"; };
+		C9769F8F239F920800793584 /* NewProjectPopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectPopOverViewController.swift; sourceTree = "<group>"; };
 		C9789509239ACFC500D65CB3 /* DesignTrayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTrayView.swift; sourceTree = "<group>"; };
 		C978950B239ACFF700D65CB3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C978950D239ADED900D65CB3 /* NewShapeModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShapeModalViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +96,6 @@
 			children = (
 				C9789509239ACFC500D65CB3 /* DesignTrayView.swift */,
 				C9AD7075239D7DDF006153AB /* DesignTrayShapeItem.swift */,
-				C90A6641239E9CB6009FE630 /* Project.swift */,
 				C90A6645239EDD79009FE630 /* WallEditingTray.swift */,
 			);
 			path = DesignTray;
@@ -103,8 +116,6 @@
 		C9BBEF14238093EF0004F631 = {
 			isa = PBXGroup;
 			children = (
-				C90A664D239F50D1009FE630 /* ProjectSectionHeaderView.swift */,
-				C90A664F239F50E5009FE630 /* ProjectSectionHeaderView.xib */,
 				C9BBEF1F238093EF0004F631 /* Kai */,
 				C9BBEF1E238093EF0004F631 /* Products */,
 			);
@@ -121,9 +132,13 @@
 		C9BBEF1F238093EF0004F631 /* Kai */ = {
 			isa = PBXGroup;
 			children = (
+				C90A664D239F50D1009FE630 /* ProjectSectionHeaderView.swift */,
+				C90A664F239F50E5009FE630 /* ProjectSectionHeaderView.xib */,
 				C9BBEF20238093EF0004F631 /* AppDelegate.swift */,
 				C9BBEF22238093EF0004F631 /* SceneDelegate.swift */,
 				C9BBEF24238093EF0004F631 /* DesignViewController.swift */,
+				C9769F8D239F905F00793584 /* NewProjectPopover.storyboard */,
+				C9769F8F239F920800793584 /* NewProjectPopOverViewController.swift */,
 				C9BBEF34238095B80004F631 /* Grid.swift */,
 				C9BBEF36238096760004F631 /* Scene.swift */,
 				C9BBEF26238093EF0004F631 /* Main.storyboard */,
@@ -139,6 +154,12 @@
 				C90A6647239F3AC7009FE630 /* ProjectsCollectionViewController.swift */,
 				C90A6649239F3B02009FE630 /* ProjectCollectionViewCell.xib */,
 				C90A664B239F3C36009FE630 /* ProjectCollectionViewCell.swift */,
+				C90A6651239F6C02009FE630 /* ProjectModel.xcdatamodeld */,
+				C90A6654239F70C3009FE630 /* ProjectDataManager.swift */,
+				C90A6658239F7B52009FE630 /* Project+CoreDataClass.swift */,
+				C90A6659239F7B52009FE630 /* Project+CoreDataProperties.swift */,
+				C90A665A239F7B52009FE630 /* Design+CoreDataClass.swift */,
+				C90A665B239F7B52009FE630 /* Design+CoreDataProperties.swift */,
 			);
 			path = Kai;
 			sourceTree = "<group>";
@@ -202,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C90A6650239F50E5009FE630 /* ProjectSectionHeaderView.xib in Resources */,
+				C9769F8E239F905F00793584 /* NewProjectPopover.storyboard in Resources */,
 				C90A664A239F3B02009FE630 /* ProjectCollectionViewCell.xib in Resources */,
 				C9BBEF2D238093F20004F631 /* LaunchScreen.storyboard in Resources */,
 				C9BBEF2A238093F20004F631 /* Assets.xcassets in Resources */,
@@ -218,10 +240,13 @@
 			files = (
 				C90A664C239F3C36009FE630 /* ProjectCollectionViewCell.swift in Sources */,
 				C9BBEF25238093EF0004F631 /* DesignViewController.swift in Sources */,
+				C90A665D239F7B52009FE630 /* Project+CoreDataProperties.swift in Sources */,
 				C978950E239ADED900D65CB3 /* NewShapeModalViewController.swift in Sources */,
 				C90A6646239EDD79009FE630 /* WallEditingTray.swift in Sources */,
 				C9AD7074239C44E8006153AB /* SaveButton.swift in Sources */,
+				C9769F90239F920800793584 /* NewProjectPopOverViewController.swift in Sources */,
 				C9BBEF21238093EF0004F631 /* AppDelegate.swift in Sources */,
+				C90A665F239F7B52009FE630 /* Design+CoreDataProperties.swift in Sources */,
 				C978950A239ACFC500D65CB3 /* DesignTrayView.swift in Sources */,
 				C90A6640239DF173009FE630 /* Circle.swift in Sources */,
 				C9BBEF37238096760004F631 /* Scene.swift in Sources */,
@@ -231,12 +256,15 @@
 				C9BBEF35238095B80004F631 /* Grid.swift in Sources */,
 				C9789512239AE02300D65CB3 /* ShapeSelectionControlItem.swift in Sources */,
 				C9789510239ADF9F00D65CB3 /* ShapeSelectionSegmentedControl.swift in Sources */,
+				C90A6653239F6C02009FE630 /* ProjectModel.xcdatamodeld in Sources */,
 				C9789514239B34CF00D65CB3 /* ModalShapeInputView.swift in Sources */,
 				C9AD7076239D7DE0006153AB /* DesignTrayShapeItem.swift in Sources */,
 				C978950C239ACFF700D65CB3 /* Extensions.swift in Sources */,
 				C90A663E239DF099009FE630 /* Rectangle.swift in Sources */,
-				C90A6642239E9CB6009FE630 /* Project.swift in Sources */,
+				C90A6655239F70C3009FE630 /* ProjectDataManager.swift in Sources */,
+				C90A665E239F7B52009FE630 /* Design+CoreDataClass.swift in Sources */,
 				C90A6644239E9DFD009FE630 /* Wall.swift in Sources */,
+				C90A665C239F7B52009FE630 /* Project+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +462,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C90A6651239F6C02009FE630 /* ProjectModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C90A6652239F6C02009FE630 /* ProjectModel.xcdatamodel */,
+			);
+			currentVersion = C90A6652239F6C02009FE630 /* ProjectModel.xcdatamodel */;
+			path = ProjectModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C9BBEF15238093EF0004F631 /* Project object */;
 }

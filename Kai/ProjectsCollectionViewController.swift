@@ -12,6 +12,9 @@ private let reuseIdentifier = "ProjectCollectionViewCell"
 
 class ProjectsCollectionViewController: UICollectionViewController {
 
+    private var dataManager = ProjectDataManager.shared
+    private var projects = [Project]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .always
@@ -26,6 +29,22 @@ class ProjectsCollectionViewController: UICollectionViewController {
         self.collectionView!.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        setupNavBar()
+        projects = dataManager.getAllProjects()
+        collectionView.reloadData()
+    }
+
+    private func setupNavBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createNewProject(_:)))
+    }
+
+    @objc private func createNewProject(_ sender: UIBarButtonItem) {
+        let storyboard : UIStoryboard = UIStoryboard(name: "NewProjectPopover", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "NewProjectPopOverViewController")
+        vc.modalPresentationStyle = .popover
+        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
+        popover.barButtonItem = sender
+        present(vc, animated: true, completion:nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -42,7 +61,7 @@ class ProjectsCollectionViewController: UICollectionViewController {
 
 
 
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension:.fractionalHeight(0.4))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension:.fractionalHeight(0.3))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
 
@@ -62,33 +81,32 @@ class ProjectsCollectionViewController: UICollectionViewController {
         return UICollectionViewCompositionalLayout(section: section)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    func designForIndexPath(_ indexPath: IndexPath) -> Design? {
+        guard let set = projects[indexPath.row].designs as? Set<Design> else { return nil }
+        let designs = Array(set)
+        return designs[indexPath.row]
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return projects.count
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 6
+        return projects[section].designs?.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProjectCollectionViewCell
-        cell.designNameLabel.text = "Test"
-        cell.lastOpenedLabel.text = "Test"
+        guard let set = projects[indexPath.row].designs as? Set<Design> else { return UICollectionViewCell() }
+        let designs = Array(set)
+        let design = designs[indexPath.row]
+        cell.designNameLabel.text = design.name
+        cell.lastOpenedLabel.text = design.lastAccessedAsString
         // Configure the cell
     
         return cell
@@ -131,12 +149,12 @@ class ProjectsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ProjectSectionHeaderView", for: indexPath) as? ProjectSectionHeaderView {
-            header.projectNameLabel.text = "Testing"
+            header.projectNameLabel.text = projects[indexPath.section].name
             return header
         }
 
         let header = ProjectSectionHeaderView(frame: .zero)
-        header.projectNameLabel.text = "Testing"
+        header.projectNameLabel.text = projects[indexPath.section].name
         return header
     }
 }
