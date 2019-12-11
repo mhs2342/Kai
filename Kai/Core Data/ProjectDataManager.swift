@@ -68,10 +68,12 @@ class ProjectDataManager {
     func updateShape(_ design: Design, _ shape: Shape) {
         removeShapeFromDesign(shape, design)
         addShapeToDesign(shape, design: design)
+        design.lastAccessed = Date()
     }
 
     func removeShapeFromDesign(_ shape: Shape, _ design: Design) {
         design.removeFromShapes(shape)
+
         do {
             try context.save()
             print("Shape Removed to Design")
@@ -87,6 +89,7 @@ class ProjectDataManager {
         customItem.width = item.width ?? 0
         customItem.diameter = item.diameter ?? 0
         design.addToDesignItems(customItem)
+        design.lastAccessed = Date()
         customItem.design = design
 
         do {

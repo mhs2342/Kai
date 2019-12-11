@@ -20,6 +20,10 @@ class DesignViewController: UIViewController {
     var wallEditingTray = WallEditingTray()
     static let SCALE_TO_SIZE: CGFloat = 10.0
 
+    deinit {
+        print("🚨🚨")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         skview = SKView(frame: view.bounds)
@@ -91,6 +95,18 @@ class DesignViewController: UIViewController {
 }
 
 extension DesignViewController: ShapeSelectionDelegate {
+    func tableSelected(_ node: SKShapeNode, location: CGPoint) {
+        let addSeatsViewController = AddSeatsViewController()
+        addSeatsViewController.delegate = self
+        addSeatsViewController.modalPresentationStyle = .popover
+        let popover: UIPopoverPresentationController = addSeatsViewController.popoverPresentationController!
+        
+        popover.sourceRect = CGRect(origin: location, size: .zero)
+
+        popover.sourceView = skview
+        present(addSeatsViewController, animated: true)
+    }
+
     func wallSegmentSelected(_ node: SKShapeNode) {
         UIView.animate(withDuration: 0.3) {
             self.wallEditingTray.isHidden = false
@@ -160,5 +176,35 @@ extension DesignViewController: UIDropInteractionDelegate {
             })
         }
     }
+}
+
+extension DesignViewController: AddSeatsViewControllerDelegate {
+    func add(seats: Int) {
+        guard let selectedNode = scene.selectedNode else { return }
+
+        if let labelNode = selectedNode.childNode(withName: "Seat Label") as? SKLabelNode {
+            labelNode.text = "\(seats)"
+        } else {
+            let labelNode = SKLabelNode(text: "\(seats)")
+            labelNode.name = "Seat Label"
+            labelNode.position = CGPoint(x: selectedNode.frame.size.width/2 - (labelNode.frame.width / 2), y: selectedNode.frame.size.height/2 - (labelNode.frame.height / 2))
+            labelNode.fontName = "Helvetica-Bold"
+            labelNode.fontSize = 20
+            labelNode.fontColor = .black
+            selectedNode.addChild(labelNode)
+        }
+
+
+//
+//        let label = UILabel()
+//        guard let selectedNode = scene.selectedNode else { return }
+//        let midpoint = CGPoint(x: selectedNode.frame.midX, y: selectedNode.frame.midY)
+//        let labelCenter = scene.convertPoint(toView: midpoint)
+//        label.text = "\(seats)"
+//        label.center = labelCenter
+//        label.textColor = .black
+    }
+
+
 }
 

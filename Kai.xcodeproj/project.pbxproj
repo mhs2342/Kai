@@ -34,6 +34,7 @@
 		C99AEA2E239FE2E2001CC7C6 /* Shape+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AEA2D239FE2E2001CC7C6 /* Shape+CoreDataProperties.swift */; };
 		C99AEA31239FEF57001CC7C6 /* CustomDesignItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AEA2F239FEF57001CC7C6 /* CustomDesignItem+CoreDataClass.swift */; };
 		C99AEA32239FEF57001CC7C6 /* CustomDesignItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AEA30239FEF57001CC7C6 /* CustomDesignItem+CoreDataProperties.swift */; };
+		C99AEA3523A02987001CC7C6 /* AddSeatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AEA3423A02987001CC7C6 /* AddSeatsViewController.swift */; };
 		C9AD7074239C44E8006153AB /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AD7073239C44E8006153AB /* SaveButton.swift */; };
 		C9AD7076239D7DE0006153AB /* DesignTrayShapeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AD7075239D7DDF006153AB /* DesignTrayShapeItem.swift */; };
 		C9BBEF21238093EF0004F631 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BBEF20238093EF0004F631 /* AppDelegate.swift */; };
@@ -74,6 +75,7 @@
 		C99AEA2D239FE2E2001CC7C6 /* Shape+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shape+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C99AEA2F239FEF57001CC7C6 /* CustomDesignItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomDesignItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C99AEA30239FEF57001CC7C6 /* CustomDesignItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomDesignItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C99AEA3423A02987001CC7C6 /* AddSeatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSeatsViewController.swift; sourceTree = "<group>"; };
 		C9AD7073239C44E8006153AB /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		C9AD7075239D7DDF006153AB /* DesignTrayShapeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTrayShapeItem.swift; sourceTree = "<group>"; };
 		C9BBEF1D238093EF0004F631 /* Kai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kai.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +182,7 @@
 				C90A6649239F3B02009FE630 /* ProjectCollectionViewCell.xib */,
 				C90A664B239F3C36009FE630 /* ProjectCollectionViewCell.swift */,
 				C99AEA33239FEF66001CC7C6 /* Core Data */,
+				C99AEA3423A02987001CC7C6 /* AddSeatsViewController.swift */,
 			);
 			path = Kai;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				C90A6644239E9DFD009FE630 /* Wall.swift in Sources */,
 				C90A665C239F7B52009FE630 /* Project+CoreDataClass.swift in Sources */,
 				C99AEA2E239FE2E2001CC7C6 /* Shape+CoreDataProperties.swift in Sources */,
+				C99AEA3523A02987001CC7C6 /* AddSeatsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,17 +11,16 @@ import UIKit
 extension Date {
     func getElapsedInterval() -> String {
 
-        let interval = Calendar.current.dateComponents([.year, .month, .day], from: self, to: Date())
+        let interval = Calendar.current.dateComponents([.hour, .minute, .second], from: self, to: Date())
 
-        if let year = interval.year, year > 0 {
-            return year == 1 ? "\(year)" + " " + "year ago" :
-                "\(year)" + " " + "years ago"
-        } else if let month = interval.month, month > 0 {
-            return month == 1 ? "\(month)" + " " + "month ago" :
-                "\(month)" + " " + "months ago"
-        } else if let day = interval.day, day > 0 {
-            return day == 1 ? "\(day)" + " " + "day ago" :
-                "\(day)" + " " + "days ago"
+        if let hour = interval.hour, hour > 0 {
+            return hour == 1 ? "\(hour)" + " " + "hour ago" :
+                "\(hour)" + " " + "hours ago"
+        } else if let minute = interval.minute, minute > 0 {
+            return minute == 1 ? "\(minute)" + " " + "minute ago" :
+                "\(minute)" + " " + "minutes ago"
+        } else if let second = interval.second, second < 30 {
+            return "\(second)" + " " + "seconds ago"
         } else {
             return "a moment ago"
 
@@ -53,14 +52,14 @@ extension UIColor {
 }
 
 extension UIView {
-    func anchorToParentsSafeAreaEdges() {
+    func anchorToParentsSafeAreaEdges(_ padding: UIEdgeInsets? = nil) {
         translatesAutoresizingMaskIntoConstraints = false
         if let parent = superview?.safeAreaLayoutGuide {
             NSLayoutConstraint.activate([
-                trailingAnchor.constraint(equalTo: parent.trailingAnchor),
-                leadingAnchor.constraint(equalTo: parent.leadingAnchor),
-                topAnchor.constraint(equalTo: parent.topAnchor),
-                bottomAnchor.constraint(equalTo: parent.bottomAnchor)
+                trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: padding?.right ?? 0),
+                leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: padding?.left ?? 0),
+                topAnchor.constraint(equalTo: parent.topAnchor, constant: padding?.top ?? 0),
+                bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: padding?.bottom ?? 0)
             ])
         }
     }

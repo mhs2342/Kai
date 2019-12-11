@@ -12,24 +12,24 @@
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProjectCollectionViewCell" id="9tm-iA-R1e" customClass="ProjectCollectionViewCell" customModule="Kai" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="242" height="209"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="eTn-8h-3yl">
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eTn-8h-3yl">
                 <rect key="frame" x="0.0" y="0.0" width="242" height="209"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Nx-A1-jJh">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="230"/>
+                        <rect key="frame" x="0.0" y="0.0" width="242" height="209"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="J3V-iR-RuN">
-                                <rect key="frame" x="0.0" y="114.5" width="250" height="83.5"/>
+                                <rect key="frame" x="0.0" y="93.5" width="242" height="83.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jB-iS-fjt">
-                                        <rect key="frame" x="8" y="8" width="234" height="38.5"/>
+                                        <rect key="frame" x="8" y="8" width="226" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thf-2G-53c">
-                                        <rect key="frame" x="8" y="46.5" width="234" height="29"/>
+                                        <rect key="frame" x="8" y="46.5" width="226" height="29"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -40,10 +40,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="230" id="IPe-MF-euF"/>
                             <constraint firstAttribute="bottom" secondItem="J3V-iR-RuN" secondAttribute="bottom" constant="32" id="Wyg-F1-tBi"/>
                             <constraint firstItem="J3V-iR-RuN" firstAttribute="leading" secondItem="0Nx-A1-jJh" secondAttribute="leading" id="hCR-HT-IzP"/>
-                            <constraint firstAttribute="width" constant="250" id="wpr-wg-0e4"/>
                             <constraint firstAttribute="trailing" secondItem="J3V-iR-RuN" secondAttribute="trailing" id="zfz-wH-rnB"/>
                         </constraints>
                     </view>

@@ -23,9 +23,10 @@ class Rectangle: SKShapeNode, ShapeRepresentable {
     init(rect: CGRect) {
         super.init()
         self.path = CGPath(rect: rect, transform: nil)
+        self.position = CGPoint(x:self.frame.midX, y:self.frame.midY);
         strokeColor = .orange
         glowWidth = 1.0
-        fillColor = SKColor.clear
+        fillColor = SKColor.white
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -15,11 +15,27 @@ class ProjectsCollectionViewController: UICollectionViewController {
     private var dataManager = ProjectDataManager.shared
     private var projects = [Project]()
 
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+
+        projects = dataManager.getAllProjects()
+    }
+
+    func printProjects() {
+        for (i, project) in projects.enumerated() {
+            let designs = project.designs as! Set<Design>
+            for (j, design) in designs.enumerated(){
+                print("Section [\(i)] \(project.name) -  Row [\(j)]\(design.name)")
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         collectionView.collectionViewLayout = createLayout()
+        collectionView.allowsMultipleSelection = false
         let headerNib = UINib(nibName: "ProjectSectionHeaderView", bundle: nil)
         collectionView.register(headerNib, forSupplementaryViewOfKind: "header", withReuseIdentifier: "ProjectSectionHeaderView")
         // Uncomment the following line to preserve selection between presentations
@@ -31,7 +47,6 @@ class ProjectsCollectionViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
         setupNavBar()
-        projects = dataManager.getAllProjects()
         collectionView.reloadData()
     }
 
@@ -51,7 +66,8 @@ class ProjectsCollectionViewController: UICollectionViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! DesignViewController
-        let design = designForIndexPath(self.collectionView.indexPathsForSelectedItems!.first!)
+        guard let indexPath = sender as? IndexPath else { return }
+        let design = designForIndexPath(indexPath)
         destination.design = design
         
     }
@@ -88,7 +104,7 @@ class ProjectsCollectionViewController: UICollectionViewController {
 
     func designForIndexPath(_ indexPath: IndexPath) -> Design? {
         guard let set = projects[indexPath.section].designs as? Set<Design> else { return nil }
-        let designs = Array(set)
+        let designs = Array(set).sorted(by: {$0.name < $1.name })
         return designs[indexPath.row]
     }
 
@@ -110,14 +126,13 @@ class ProjectsCollectionViewController: UICollectionViewController {
         guard let design = designForIndexPath(indexPath) else { return UICollectionViewCell() }
         cell.designNameLabel.text = design.name
         cell.lastOpenedLabel.text = design.lastAccessedAsString
-        // Configure the cell
     
         return cell
     }
 
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "openDesign", sender: nil)
+        performSegue(withIdentifier: "openDesign", sender: indexPath)
     }
 
 

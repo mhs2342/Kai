@@ -11,6 +11,7 @@ import SpriteKit
 protocol ShapeSelectionDelegate: class {
     func wallSegmentSelected(_ node: SKShapeNode)
     func wallSegmentDeselected()
+    func tableSelected(_ node: SKShapeNode, location: CGPoint)
 }
 
 class Scene: SKScene {
@@ -22,7 +23,7 @@ class Scene: SKScene {
     static let BLOCK_SIZE: CGFloat = 20.0
     static let TABLE_SCALE_FACTOR: CGFloat = BLOCK_SIZE / 2
     private var movingNode: SKNode?
-    private var selectedNode: SKShapeNode?
+    var selectedNode: SKShapeNode?
     weak var editingDelegate: ShapeSelectionDelegate?
 
     override init(size: CGSize) {
@@ -49,6 +50,10 @@ class Scene: SKScene {
 
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchGestureRecognized(_:)))
         to.addGestureRecognizer(pinchGesture)
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTapGestureRecognied(_:)))
+        tapGesture.numberOfTapsRequired = 2
+        to.addGestureRecognizer(tapGesture)
     }
 
     @objc func pinchGestureRecognized(_ gestureRecognizer: UIPinchGestureRecognizer) {
@@ -88,11 +93,20 @@ class Scene: SKScene {
         }
     }
 
+    @objc func doubleTapGestureRecognied(_ gestureRecognizer: UITapGestureRecognizer) {
+        let location = gestureRecognizer.location(in: gestureRecognizer.view!)
+        guard let selected = self.selectedNode else { return }
+        self.editingDelegate?.tableSelected(selected, location: location)
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let location = touch.location(in: self)
 
             let touchedNodes = self.nodes(at: location)
+            if touchedNodes.filter({ !($0 is Grid) }).isEmpty {
+                self.selectedNode = nil
+            }
             for node in touchedNodes.reversed() {
                 if node is Wall {
                     self.selectedNode = node as? SKShapeNode
@@ -100,7 +114,9 @@ class Scene: SKScene {
                     self.editingDelegate?.wallSegmentSelected(selectedNode!)
                 } else if node is SKShapeNode {
                     self.movingNode = node
+                    self.selectedNode = node as? SKShapeNode
                     self.editingDelegate?.wallSegmentDeselected()
+
                 } else {
                     self.editingDelegate?.wallSegmentDeselected()
                 }
@@ -143,10 +159,9 @@ class Scene: SKScene {
         for existing in filtered where existing is SKShapeNode {
             guard let existing = existing as? SKShapeNode,
             let node = node as? SKShapeNode,
-            (!(node is RectangularWall) && !(existing is RectangularWall) )else {
+            (!(node is RectangularWall) && !(existing is RectangularWall)) else {
                 continue
             }
-
             if existing.intersects(node) {
                 node.strokeColor = .red
                 existing.strokeColor = .red
@@ -197,7 +212,8 @@ class Scene: SKScene {
 
     func populateDesign() {
         if let shapes = design.shapes as? Set<Shape> {
-            for shape in shapes {
+            var orderedShapes = Array(shapes)
+            for shape in orderedShapes {
                 if let circle = try? Circle(shape) {
                     scene?.addChild(circle)
                 } else if let wall = try? RectangularWall(shape) {

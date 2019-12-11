@@ -40,10 +40,10 @@ class Circle: SKShapeNode, ShapeRepresentable {
         self.path = CGPath(ellipseIn: CGRect(origin: CGPoint.zero,
                                              size: CGSize(width: diameter, height: diameter)),
                            transform: nil)
-        position = point
+        self.position = point
         strokeColor = SKColor.orange
         glowWidth = 1.0
-        fillColor = SKColor.clear
+        fillColor = SKColor.white
     }
 
     required init?(coder aDecoder: NSCoder) {
