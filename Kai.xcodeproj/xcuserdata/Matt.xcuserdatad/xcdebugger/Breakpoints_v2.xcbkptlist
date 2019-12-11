@@ -23,30 +23,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "15F8025E-9CA9-46B1-A877-92C6C458373B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "Yes"
-            filePath = "Kai/Scene.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "pinchGestureRecognized(_:)"
-            landmarkType = "7">
-            <Actions>
-               <BreakpointActionProxy
-                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
-                  <ActionContent
-                     consoleCommand = "po gestureRecognizer.scale">
-                  </ActionContent>
-               </BreakpointActionProxy>
-            </Actions>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "8A3023F0-50FB-4EDA-A194-5052541CDEA4"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -70,8 +46,8 @@
             filePath = "Kai/Scene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "adjustlength(feet:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -102,8 +78,8 @@
             filePath = "Kai/Scene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "applyRotationForViewAtLocation(point:rotation:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -134,8 +110,8 @@
             filePath = "Kai/ProjectsCollectionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "designForIndexPath(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -150,8 +126,8 @@
             filePath = "Kai/ProjectsCollectionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
             <Actions>
@@ -184,6 +160,54 @@
             endingLineNumber = "21"
             landmarkName = "init(coder:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D4702EEE-E761-4D15-9026-07B79D8BBE58"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kai/Scene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "populateDesign()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D4702EEE-E761-4D15-9026-07B79D8BBE58 - 3d63338dbe6721da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kai.Scene.populateDesign() -&gt; ()"
+                  moduleName = "Kai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Matt/Development/Kai/Kai/Scene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "234"
+                  endingLineNumber = "234"
+                  offsetFromSymbolStart = "1157">
+               </Location>
+               <Location
+                  uuid = "D4702EEE-E761-4D15-9026-07B79D8BBE58 - db00a51968c5d0cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (__C.SKShapeNode) -&gt; () in Kai.Scene.populateDesign() -&gt; ()"
+                  moduleName = "Kai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Matt/Development/Kai/Kai/Scene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "234"
+                  endingLineNumber = "234"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

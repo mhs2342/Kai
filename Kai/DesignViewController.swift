@@ -180,18 +180,14 @@ extension DesignViewController: UIDropInteractionDelegate {
 
 extension DesignViewController: AddSeatsViewControllerDelegate {
     func add(seats: Int) {
-        guard let selectedNode = scene.selectedNode else { return }
+        guard let selectedNode = scene.selectedNode as? SeatsDisplayable else { return }
+        selectedNode.createSeatLabel(Int32(seats))
 
-        if let labelNode = selectedNode.childNode(withName: "Seat Label") as? SKLabelNode {
-            labelNode.text = "\(seats)"
-        } else {
-            let labelNode = SKLabelNode(text: "\(seats)")
-            labelNode.name = "Seat Label"
-            labelNode.position = CGPoint(x: selectedNode.frame.size.width/2 - (labelNode.frame.width / 2), y: selectedNode.frame.size.height/2 - (labelNode.frame.height / 2))
-            labelNode.fontName = "Helvetica-Bold"
-            labelNode.fontSize = 20
-            labelNode.fontColor = .black
-            selectedNode.addChild(labelNode)
+
+        if let representable = selectedNode as? ShapeRepresentable,
+            let shape = representable.shape {
+            shape.seats = Int32(seats)
+            ProjectDataManager.shared.updateShape(design, shape)
         }
 
 

@@ -20,6 +20,7 @@ extension Shape {
     @NSManaged public var frame: String
     @NSManaged public var name: String
     @NSManaged public var radius: Float
+    @NSManaged public var seats: Int32
     @NSManaged public var design: Design
 
 }

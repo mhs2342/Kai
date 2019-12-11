@@ -52,7 +52,7 @@ class RectangularWall: Rectangle {
     }
     override init(rect: CGRect) {
         super.init(rect: rect)
-
+        fillColor = .clear
         strokeColor = .black
         lineWidth = 4.0
     }

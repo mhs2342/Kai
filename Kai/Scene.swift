@@ -24,6 +24,7 @@ class Scene: SKScene {
     static let TABLE_SCALE_FACTOR: CGFloat = BLOCK_SIZE / 2
     private var movingNode: SKNode?
     var selectedNode: SKShapeNode?
+    private var wall: RectangularWall?
     weak var editingDelegate: ShapeSelectionDelegate?
 
     override init(size: CGSize) {
@@ -212,17 +213,26 @@ class Scene: SKScene {
 
     func populateDesign() {
         if let shapes = design.shapes as? Set<Shape> {
-            var orderedShapes = Array(shapes)
-            for shape in orderedShapes {
+            var orderedShapes = Array(shapes).compactMap { (shape) -> SKShapeNode? in
                 if let circle = try? Circle(shape) {
-                    scene?.addChild(circle)
-                } else if let wall = try? RectangularWall(shape) {
-                    scene?.addChild(wall)
-                } else if let rectangle = try? Rectangle(shape) {
-                    scene?.addChild(rectangle)
+                    return circle
+                  } else if let wall = try? RectangularWall(shape) {
+                    return wall
+                  } else if let rectangle = try? Rectangle(shape) {
+                    return rectangle
                 }
-
+                return nil
+            }.sorted { (s1, s2) -> Bool in
+                if (s1 is RectangularWall) {
+                    return true
+                } else if (s2 is RectangularWall) {
+                    return false
+                } else {
+                    return false
+                }
             }
+            orderedShapes.forEach({ addChild($0) })
+
         }
     }
 }

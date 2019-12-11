@@ -12,7 +12,7 @@ enum ShapeError: Error {
     case DecodingFailure
 }
 
-class Circle: SKShapeNode, ShapeRepresentable {
+class Circle: SKShapeNode, ShapeRepresentable, SeatsDisplayable {
     var shape: Shape?
 
     func populateShape(_ shape: Shape) -> Shape {
@@ -32,6 +32,7 @@ class Circle: SKShapeNode, ShapeRepresentable {
 
         self.init(diameter: CGFloat(diameter), point: rect.origin)
         self.shape = shape
+        createSeatLabel(shape.seats)
     }
     
     init(diameter: CGFloat, point: CGPoint) {
@@ -48,6 +49,20 @@ class Circle: SKShapeNode, ShapeRepresentable {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func createSeatLabel(_ seats: Int32) {
+        if let labelNode = childNode(withName: "Seat Label") as? SKLabelNode {
+            labelNode.text = "\(seats)"
+        } else {
+            let labelNode = SKLabelNode(text: "\(seats)")
+            labelNode.name = "Seat Label"
+            labelNode.position = CGPoint(x: frame.size.width/2 - (labelNode.frame.width / 2), y: frame.size.height/2 - (labelNode.frame.height / 2))
+            labelNode.fontName = "Helvetica-Bold"
+            labelNode.fontSize = 20
+            labelNode.fontColor = .black
+            addChild(labelNode)
+        }
     }
 
 }
